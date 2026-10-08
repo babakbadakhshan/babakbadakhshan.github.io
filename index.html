@@ -51,9 +51,11 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: clip;
     }
 
     body {
+      overflow-x: clip;
       background: var(--bg);
       color: var(--text);
       font-family: "Manrope", sans-serif;
@@ -353,7 +355,8 @@
 	
 	.about-divider {
   display: block;
-  width: 900px;
+  width: 100%;
+  max-width: 900px;
   height: 1px;
   margin: 50px auto;
   background: linear-gradient(to right, transparent, var(--line), transparent);

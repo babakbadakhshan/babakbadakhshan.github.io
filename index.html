@@ -1,0 +1,2932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content="Academic research profile of Babak Badakhshan."
+  />
+
+  <title>Babak Badakhshan — Academic Researcher</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #f5f5f0;
+      --surface: #ffffff;
+      --text: #111111;
+      --muted: #686868;
+      --line: #d9d9d2;
+      --accent: #d8ff3e;
+      --accent-dark: #91ae00;
+      --dark: #151515;
+      --on-accent: #111111;
+      --max-width: 1180px;
+      --radius: 20px;
+    }
+
+    body.dark-mode {
+      --bg: #111111;
+      --surface: #1d1d1d;
+      --text: #f5f5f0;
+      --muted: #a4a4a0;
+      --line: #383838;
+      --dark: #f5f5f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+      line-height: 1.6;
+      transition:
+        background 0.25s ease,
+        color 0.25s ease;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .mono {
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Header */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(245, 245, 240, 0.9);
+      backdrop-filter: blur(14px);
+    }
+
+    body.dark-mode .site-header {
+      background: rgba(17, 17, 17, 0.9);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+    }
+
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .brand span {
+      color: var(--accent-dark);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      color: var(--text);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-dark);
+      transition: width 0.25s ease;
+    }
+
+    body.dark-mode .nav-links a::after {
+      background: var(--accent);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 20px;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text);
+      font-family: "DM Mono", monospace;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .theme-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle .icon-sun {
+      display: none;
+    }
+
+    body.dark-mode .theme-toggle .icon-moon {
+      display: none;
+    }
+
+    body.dark-mode .theme-toggle .icon-sun {
+      display: block;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: end;
+      gap: 64px;
+      min-height: 680px;
+      padding: 110px 0 90px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent-dark);
+      content: "";
+    }
+
+    h1 {
+      max-width: 780px;
+      font-size: clamp(2.25rem, 4.2vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-intro {
+      max-width: 470px;
+      margin-top: 38px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .hero-intro a {
+      color: var(--accent-dark);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    body.dark-mode .hero-intro a {
+      color: var(--accent);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border: 1px solid var(--text);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button.primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--on-accent);
+    }
+
+    .button.secondary {
+      background: transparent;
+    }
+
+    .hero-photo {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius);
+      object-fit: cover;
+      transform: rotate(-3deg);
+      box-shadow: -12px 14px 0 var(--line);
+      justify-self: center;
+    }
+
+    /* General sections */
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 64px;
+    }
+
+    .section-heading-row {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    .section-number {
+      color: var(--accent-dark);
+      font-family: "DM Mono", monospace;
+      font-weight: 700;
+      font-size: 1.05rem;
+      white-space: nowrap;
+    }
+
+    body.dark-mode .section-number {
+      color: var(--accent);
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      letter-spacing: -0.03em;
+      white-space: nowrap;
+    }
+
+    .section-heading-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--line), transparent);
+    }
+	
+	.about-divider {
+  display: block;
+  width: 900px;
+  height: 1px;
+  margin: 50px auto;
+  background: linear-gradient(to right, transparent, var(--line), transparent);
+  }
+	
+    .section-heading p {
+      max-width: 520px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    /* About */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 50px;
+    }
+
+    .about-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      max-width: 620px;
+    }
+
+    .about-bio p {
+      font-size: 1.15rem;
+      line-height: 1.55;
+      letter-spacing: -0.02em;
+      color: var(--muted);
+    }
+
+    .about-bio strong {
+      color: var(--text);
+    }
+
+    .about-bio a {
+      color: var(--accent-dark);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    body.dark-mode .about-bio a {
+      color: var(--accent);
+    }
+
+    .about-photo {
+      position: relative;
+      border-radius: 20px;
+    }
+
+    .about-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: 20px;
+      object-fit: cover;
+      display: block;
+    }
+
+    body.dark-mode .about-photo img {
+      box-shadow:
+        0 0 0 1px var(--accent),
+        0 0 50px rgba(216, 255, 62, 0.28);
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .fact {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface);
+    }
+
+    .fact strong {
+      display: block;
+      margin-top: 12px;
+      font-size: 1.05rem;
+    }
+
+    /* Publications */
+
+    .publication-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .publication {
+      display: grid;
+      grid-template-columns: 96px 150px 1fr auto;
+      gap: 30px;
+      align-items: center;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+      transition: 0.25s ease;
+    }
+
+    .publication-thumb {
+      width: 96px;
+      height: 96px;
+      border-radius: 14px;
+      object-fit: cover;
+    }
+
+    .publication:hover {
+      background: var(--surface);
+    }
+
+    .publication h3 {
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+      line-height: 1.25;
+      letter-spacing: -0.04em;
+    }
+
+    .publication p {
+      color: var(--muted);
+    }
+
+    .publication-link {
+      border: 0;
+      background: transparent;
+      color: var(--accent-dark);
+      font-family: "DM Mono", monospace;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .publication-list-footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    /* Peer Review */
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review-card {
+      display: flex;
+      flex-direction: column;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface);
+      transition: 0.25s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.25);
+    }
+
+    .review-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .review-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--bg);
+      color: var(--accent-dark);
+      flex-shrink: 0;
+    }
+
+    body.dark-mode .review-icon {
+      color: var(--accent);
+    }
+
+    .review-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .review-type {
+      padding: 5px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .review-card h3 {
+      margin-bottom: 6px;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .review-publisher {
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1.5;
+    }
+
+    .review-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 0.78rem;
+    }
+
+    .review-count {
+      color: var(--accent-dark);
+      font-weight: 700;
+    }
+
+    body.dark-mode .review-count {
+      color: var(--accent);
+    }
+
+    .review-cert {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent-dark);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    body.dark-mode .review-cert {
+      color: var(--accent);
+    }
+
+    .review-cert svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Projects */
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project {
+      display: flex;
+      flex-direction: column;
+      min-height: 330px;
+      padding: 30px;
+      border-radius: var(--radius);
+      background: var(--dark);
+      color: white;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .project-image {
+      width: calc(100% + 60px);
+      height: 170px;
+      margin: -30px -30px 24px;
+      border-radius: var(--radius) var(--radius) 0 0;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project:nth-child(2) {
+      background: var(--accent);
+      color: var(--on-accent);
+    }
+
+    .project:nth-child(3) {
+      background: #dedad0;
+      color: var(--on-accent);
+    }
+
+    body.dark-mode .project:first-child {
+      background: #f5f5f0;
+      color: var(--on-accent);
+    }
+
+    body.dark-mode .project:nth-child(3) {
+      background: #343434;
+      color: #f5f5f0;
+    }
+
+    .project:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.25);
+    }
+
+    .project-number {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 60px;
+      font-family: "DM Mono", monospace;
+      font-size: 0.75rem;
+    }
+
+    .project h3 {
+      margin-bottom: 25px;
+      font-size: clamp(1.5rem, 3vw, 1.9rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .project p {
+      max-width: 430px;
+      opacity: 0.72;
+    }
+
+    .project-more {
+      display: inline-block;
+      margin-top: auto;
+      padding-top: 40px;
+      align-self: flex-start;
+      font-family: "DM Mono", monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      opacity: 0.72;
+      transition: 0.2s ease;
+    }
+
+    .project:hover .project-more {
+      opacity: 1;
+    }
+
+    /* Experience */
+
+    .timeline {
+      position: relative;
+      padding-left: 64px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 21px;
+      top: 22px;
+      bottom: 22px;
+      width: 2px;
+      background: var(--line);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 24px;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: 0.25s ease;
+    }
+
+    .timeline-item:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.25);
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-icon {
+      position: absolute;
+      left: -64px;
+      top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--accent-dark);
+      background: var(--bg);
+      color: var(--accent-dark);
+    }
+
+    .timeline-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    body.dark-mode .timeline-icon {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    body.dark-mode .timeline-logo {
+      color: var(--accent);
+    }
+
+    .timeline-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .timeline-role {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .timeline-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--accent-dark);
+    }
+
+    .timeline-logo svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .timeline-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+      padding: 4px;
+      background: #fff;
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+      line-height: 1.25;
+      letter-spacing: -0.04em;
+    }
+
+    .timeline-role a {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--accent-dark);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .timeline-role a svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .timeline-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .timeline-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--bg);
+      color: var(--muted);
+      font-size: 0.78rem;
+      white-space: nowrap;
+    }
+
+    .timeline-pill svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .timeline-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+
+    .timeline-location svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .timeline-item ul {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+      list-style: none;
+    }
+
+    .timeline-item li {
+      position: relative;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .timeline-item li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-dark);
+    }
+
+    .timeline-current {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .timeline-current::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+
+    /* Skills */
+
+    .skills-groups {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 60px;
+    }
+
+    .skill-group {
+      display: flex;
+      flex-direction: column;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface);
+      transition: 0.25s ease;
+    }
+
+    .skill-group:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.25);
+    }
+
+    .skill-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .skill-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--bg);
+      color: var(--accent-dark);
+      flex-shrink: 0;
+    }
+
+    body.dark-mode .skill-icon {
+      color: var(--accent);
+    }
+
+    .skill-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .skill-group h3 {
+      position: relative;
+      margin: 0;
+      padding-bottom: 8px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+
+    .skill-group h3::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--accent);
+    }
+
+    body.dark-mode .skill-group h3::after {
+      background: var(--accent);
+    }
+
+    .skill-group p {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .skill-section {
+      margin-top: 22px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .skill-section:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .skill-section h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
+      color: var(--text);
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .skill-section h4::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    body.dark-mode .skill-section h4::before {
+      background: var(--accent);
+    }
+
+    .skill-section .skill-meta {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 5px;
+    }
+
+    body.dark-mode .skill-section .skill-meta {
+      color: var(--accent);
+    }
+
+    .skill-section p {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    .skill-date {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--accent-dark);
+      background: rgba(145, 174, 0, 0.12);
+      padding: 3px 9px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+
+    body.dark-mode .skill-date {
+      color: var(--accent);
+      background: rgba(216, 255, 62, 0.12);
+    }
+
+    .skill-degree {
+      margin-top: 4px !important;
+      color: var(--text) !important;
+      font-size: 0.88rem !important;
+      font-style: italic;
+    }
+
+    /* News */
+
+    .news-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .news-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 220px;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface);
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.25);
+    }
+
+    .news-card h3 {
+      margin: 45px 0 12px;
+      font-size: 1.2rem;
+      line-height: 1.2;
+    }
+
+    .news-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .news-more {
+      display: inline-block;
+      margin-top: auto;
+      padding-top: 22px;
+      font-family: "DM Mono", monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+    }
+
+    body.dark-mode .news-more {
+      color: var(--accent);
+    }
+
+    /* Contact */
+
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-tagline {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      max-width: 680px;
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.6;
+      letter-spacing: normal;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      font-weight: 700;
+    }
+
+    .contact-link span:last-child {
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 0.75rem;
+    }
+
+    .contact-link span:first-child {
+      color: var(--text);
+      transition: color 0.2s ease;
+    }
+
+    .contact-link:hover span:first-child,
+    .contact-link:focus-visible span:first-child {
+      color: var(--muted);
+    }
+
+    /* Arrow icons (replaces text glyphs for consistent mobile rendering) */
+
+    .arrow-icon {
+      flex: none;
+      width: 0.95em;
+      height: 0.95em;
+      margin-left: 0.4em;
+      vertical-align: -0.12em;
+    }
+
+    .project-more,
+    .button {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .project-more {
+      gap: 0;
+    }
+
+    .contact-link span:last-child {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .contact-link span:last-child .arrow-icon {
+      width: 1.1rem;
+      height: 1.1rem;
+      margin-left: 0;
+    }
+
+    @media (max-width: 850px) {
+      .arrow-icon {
+        width: 1em;
+        height: 1em;
+      }
+
+      .contact-link span:last-child .arrow-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+    }
+
+    /* Modal */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.72);
+      cursor: pointer;
+    }
+
+    .modal-content {
+      position: relative;
+      z-index: 1;
+      width: min(650px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 42px;
+      border-radius: 24px;
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+      animation: modalIn 0.25s ease;
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--text);
+      font-size: 1.6rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .modal-content h2 {
+      max-width: 560px;
+      margin: 18px 0 16px;
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+    }
+
+    .modal-image {
+      width: 100%;
+      height: 220px;
+      margin-bottom: 20px;
+      border-radius: 16px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .modal-authors {
+      margin-bottom: 28px;
+      color: var(--accent-dark);
+      font-family: "DM Mono", monospace;
+      font-size: 0.8rem;
+    }
+
+    .modal-fields {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .modal-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .modal-field.modal-field-full {
+      grid-column: 1 / -1;
+    }
+
+    .modal-field-label {
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .modal-field-value {
+      font-size: 0.95rem;
+    }
+
+    .modal-field-value a {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .modal-description {
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .modal-description p {
+      margin: 0 0 1em;
+    }
+
+    .modal-description a {
+      color: #1a73e8;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .modal-description a:hover {
+      color: #0b57c4;
+    }
+
+    body.dark-mode .modal-description a {
+      color: #6ea8ff;
+    }
+
+    body.dark-mode .modal-description a:hover {
+      color: #9cc3ff;
+    }
+
+    .modal-description p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 850px) {
+      .container {
+        width: min(var(--max-width), calc(100% - 32px));
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 76px;
+        right: 16px;
+        left: 16px;
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--surface);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 12px;
+      }
+
+      .nav-links a::after {
+        left: 12px;
+        width: 0;
+      }
+
+      .nav-links a:hover::after,
+      .nav-links a.active::after {
+        width: calc(100% - 24px);
+      }
+
+      .theme-toggle {
+        margin-left: auto;
+        margin-right: 12px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero,
+      .about-grid,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        gap: 70px;
+        padding: 85px 0;
+      }
+
+      .hero-photo {
+        max-width: 260px;
+      }
+
+      .section-heading {
+        margin-bottom: 38px;
+      }
+
+      .section-heading-line {
+        display: none;
+      }
+
+      .publication {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .timeline {
+        padding-left: 44px;
+      }
+
+      .timeline::before {
+        left: 15px;
+      }
+
+      .timeline-item {
+        padding: 24px 20px;
+      }
+
+      .timeline-icon {
+        left: -44px;
+        top: 24px;
+        width: 32px;
+        height: 32px;
+      }
+
+      .timeline-icon svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .timeline-header {
+        flex-direction: column;
+      }
+
+      .timeline-meta {
+        align-items: flex-start;
+      }
+
+      .publication-thumb {
+        width: 72px;
+        height: 72px;
+      }
+
+      .publication-link {
+        margin-top: 8px;
+        text-align: left;
+      }
+
+      .projects,
+      .news-list {
+        grid-template-columns: 1fr;
+      }
+
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-group {
+        padding: 24px;
+      }
+
+      .skills-groups {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .project-number {
+        margin-bottom: 50px;
+      }
+
+      .facts {
+        margin-top: 20px;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .modal-content {
+        padding: 32px 24px;
+      }
+
+      .modal-image {
+        height: 160px;
+      }
+
+      .facts {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-fields {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#" class="brand">
+        BABAK BADAKHSHAN<span>.</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#peer-review">Peer Review</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <button class="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="theme-icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+        <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+      </button>
+
+      <button class="menu-toggle" aria-label="Toggle navigation">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="container hero">
+      <div>
+        <div class="eyebrow">
+          Master of Science · Data Science &amp; Health
+        </div>
+
+        <h1>
+          Babak Badakhshan, MSc
+        </h1>
+
+        <p class="hero-intro">
+            Babak is a quantitative urban health geographer and (spatial) data scientist who studies how urban built-natural-social environments influence people's health and health behaviours by combining novel spatial big data with state-of-the-art methodological solutions. His work contributes to fields of environmental epidemiology, geoinformatics, urban planning and design, and sustainable transport planning.  Babak's ultimate goal is to generate actionable insights for urban policymakers and agencies to co-create healthy, inclusive, and just living environments that support both people and the environment in a changing world.  
+        </p>
+
+        <div class="hero-actions">
+          <a href="#publications" class="button primary">
+            Explore my work <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform:rotate(90deg)"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+          </a>
+
+          <a
+            href="assets/my-cv.pdf"
+            class="button secondary"
+            download
+          >
+            Download CV
+          </a>
+        </div>
+      </div>
+
+      <img
+        class="hero-photo"
+        src="assets/hero.jpg"
+        alt="Portrait of Babak Badakhshan"
+      />
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-heading-row">
+            <span class="section-number">01.</span>
+            <h2>About</h2>
+            <span class="section-heading-line"></span>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-bio">
+            <p>
+              I possess a multidisciplinary research background in sustainable urban mobility, geographical information science, and environmental health sciences. Through my research, I strive to understand the complex pathways through which our living surroundings, from the air we breathe to the noise we experience and the environment we see, shape health, mental well-being and societal inequalities. The focal point of my work is using activity spaces to model and map individualised dynamic environmental exposure in daily movements to better support urban practitioners and public health agencies in building healthier, fairer and sustainable cities.
+            </p>
+            <p>
+              I completed my bachelor's degree in Geography and Urban Planning with a specialisation in applications of GIS and remote sensing for sustainable urban and regional planning. Then, I moved to Kharazmi University in Tehran, Iran, where I defended my master's thesis titled "linking multiple nature exposure types during daily urban travel to health and well-being: a mixed-method approach" with distinction. In my dissertation, I deeply investigated how urban natural environments shape people’s health and well-being by combining multiple nature exposure metrics (i.e., visibility, availability and accessibility) during daily travel routes, origin (individuals' home locations) and destinations (e.g., work and everyday errands) and the possibility of street-level greenery on healthy mobility behaviours.
+            </p>
+            <p>
+              After completing my master's degree, I took on several roles in different institutions, first as an urban planner and later as a (spatial) data scientist, working on various projects related to urban mobility and spatial accessibility modelling, urban resilience and environmental exposure, and human–place relationships. During this time, I also established my own small training academy ("Geoanalytica") to teach and consult in GIScience, data science, and remote sensing.
+            </p>
+            <p>
+              So far, I have successfully taught and mentored over a hundred GIS and AI enthusiasts from various disciplines. I actively contribute to the body of scholarly knowledge in the domain of urban planning and transportation through writing and publishing scientific manuscripts in highly reputable peer-reviewed journals.
+            </p>
+          </div>
+
+          <div class="about-photo">
+            <img src="assets/animate.gif" alt="Portrait photo" />
+          </div>
+        </div>
+
+        <span class="about-divider"></span>
+
+        <div class="skills-groups">
+          <div class="skill-group">
+            <div class="skill-top">
+              <span class="skill-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"></path><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"></path></svg>
+              </span>
+              <h3>Summary of Education</h3>
+            </div>
+
+            <div class="skill-section">
+              <span class="skill-meta">2017 – 2020 · University of Tehran</span>
+              <h4>Summer School Certification in Applied Data Science</h4>
+              <p><strong>Subject Covered:</strong> Statistics &amp; Probability; SQL; Machine Learning; Deep Learning; Text Mining; Big Data Analytics; Spatial Data Science and Geo-Intelligence; Python Programming; R Programming.</p>
+            </div>
+
+            <div class="skill-section">
+              <span class="skill-meta">2016 – 2017 · Kharazmi University</span>
+              <h4>MSc Geography and Urban Planning (Distinction)</h4>
+              <p><strong>Dissertation Title:</strong> Linking multiple nature exposure types in daily urban trips to human health and mental well-being: A mixed-method approach.</p>
+              <p><strong>Subject Covered:</strong> Geographic Information System (GIS); Remote Sensing; Google Street View imagery; Participatory GIS; Spatial Data Science; Urban Nature Exposure Assessment.</p>
+            </div>
+
+            <div class="skill-section">
+              <span class="skill-meta">2009 – 2014 · University of Maragheh</span>
+              <h4>Bachelor in Geography and Urban Planning</h4>
+              <p><strong>Subject Covered:</strong> Urban Land Use Planning; Planning Theory; Urban Geography; RS and GIS; Urban and Regional Planning; Urban Sustainability; Participatory Planning; Project Management.</p>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-top">
+              <span class="skill-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+              </span>
+              <h3>My Research Interests</h3>
+            </div>
+
+            <div class="skill-section">
+              <h4>Nature Based Solutions</h4>
+              <p>Green Infrastructure; Green–Blue Space; Urban Natural Environment; Nature-Based Recreation; Nature Exposure; Nature Therapy; Ecosystem Services; Nature–Human Interactions.</p>
+            </div>
+
+            <div class="skill-section">
+              <h4>Geographical Information Science &amp; Remote Sensing</h4>
+              <p>Spatial Data Science; Geo-AI; Geospatial Intelligence; Geocomputation; Spatial Statistics; Geovisualisation; Big Spatial Data Analysis; Satellite Image Analysis.</p>
+            </div>
+
+            <div class="skill-section">
+              <h4>Environmental Science</h4>
+              <p>Environmental Epidemiology; Exposure Assessment; Environmental Exposure; Built/streetscape Environments; Human-Environment Relations; Activity Space Modelling; Environmental Injustice; Environmental Psychology; Health Geography.</p>
+            </div>
+
+            <div class="skill-section">
+              <h4>Urban Mobility</h4>
+              <p>Travel Satisfaction; Mobility Behaviour and Behavioural Change; Spatial Modelling and Multimodal Accessibility; The 15-Minute Cities; Perceived Accessibility; Active Transportation; Healthy Mobility Behaviour.</p>
+            </div>
+
+            <div class="skill-section">
+              <h4>Participatory Urban Planning</h4>
+              <p>Public Participation GIS; Citizen Engagement; User-generated Geo-located Information; Volunteered Geographic Information.</p>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-top">
+              <span class="skill-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+              </span>
+              <h3>Key Technical Skills</h3>
+            </div>
+
+            <div class="skill-section">
+              <h4>Programming (selected packages)</h4>
+              <p>R/RStudio (e.g., sf, rgdal, rgeos, tmap, spatialreg, terra, r5r, ggplot2); Python (e.g., rasterio, Fiona, pandas, numpy, scikit‑learn, matplotlib, scipy, geopandas, NetworkX, osmnx, pandana, pydeck, folium, H3); MATLAB; JavaScript (e.g., Leaflet and Google Earth Engine API).</p>
+            </div>
+
+            <div class="skill-section">
+              <h4>GIS Software</h4>
+              <p>ArcGIS 10.x/Pro; ArcGIS Online; QGIS; DepthmapX (space syntax).</p>
+            </div>
+
+            <div class="skill-section">
+              <h4>Remote Sensing</h4>
+              <p>Google Earth Engine; ENVI; SNAP; ERDAS, eCognition.</p>
+            </div>
+
+            <div class="skill-section">
+              <h4>Statistical Packages</h4>
+              <p>SPSS; STATA; Minitab.</p>
+            </div>
+
+            <div class="skill-section">
+              <h4>Data Visualisation &amp; Interactive Mapping</h4>
+              <p>R (Shiny); Streamlit; Power BI &amp; DAX; Tableau; ArcGIS StoryMaps; Leaflet; Pydeck; Kepler.gl; Mapbox.</p>
+            </div>
+
+            <div class="skill-section">
+              <h4>Deep Learning Environment (for Computer Vision &amp; Sequential Modelling)</h4>
+              <p>TensorFlow; PyTorch; PyTorch Geometric; Transformers; YOLOv4-v8.</p>
+            </div>
+
+            <div class="skill-section">
+              <h4>Version Control</h4>
+              <p>GitHub/GitLab; Google Colab.</p>
+            </div>
+          </div>
+        </div>        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-heading-row">
+            <span class="section-number">02.</span>
+            <h2>Experience</h2>
+            <span class="section-heading-line"></span>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <span class="timeline-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            </span>
+
+            <div class="timeline-header">
+              <div class="timeline-role">
+                <span class="timeline-logo">
+                  <img src="assets/shahrpat.jpg" alt="Institution logo" />
+                </span>
+
+                <div>
+                  <h3>Data Scientist & Big Data Analyst</h3>
+                  <a href="#" target="_blank" rel="noreferrer">
+                    Tehran Urban Research and Planning Centre
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="timeline-meta">
+                <span class="timeline-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  2024 — Present
+                </span>
+
+                <span class="timeline-location">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Tehran, Iran
+                </span>
+              </div>
+            </div>
+
+            <ul>
+              <li>Data collection from online sources (e.g., geo-tagged social media content, blogs, APIs, etc.), pre-processing and conducting statistical and AI-driven models to understand people’s experience and behaviour in urban environments/nature visitation.</li>
+              <li>Co-designing questionnaires, surveys and possible participatory GIS techniques for data collection.</li>
+              <li> Providing data-driven insights to policymakers and stakeholders for evidence-based urban planning and decision-making (e.g., through interactive dashboards, executive summaries, stakeholder presentations and workshops).</li>
+            </ul>
+
+            <span class="timeline-current">Current Position</span>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            </span>
+
+            <div class="timeline-header">
+              <div class="timeline-role">
+                <span class="timeline-logo">
+                  <img src="assets/farnahad.jpg" alt="Institution logo" />
+                </span>
+
+                <div>
+                  <h3>Geospatial Data Scientist</h3>
+                  <a href="#" target="_blank" rel="noreferrer">
+                    Farnahd Urbanism & Architecture Consultant firm
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="timeline-meta">
+                <span class="timeline-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  2023 — 2024
+                </span>
+
+                <span class="timeline-location">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Tehran, Iran
+                </span>
+              </div>
+            </div>
+
+            <ul>
+              <li>Spatial modelling of active travel accessibility using open-source GIS data.</li>
+              <li>Modelling spatial and temporal variation in greenery exposure during daily urban trips (GPS tracking + open/commercial high-resolution satellite data).</li>
+              <li>Applying deep Convolutional Neural Networks (CNNs) to segment geotagged Google Street View imagery.</li>
+			  <li>Quantifying and harmonising composite greenspace metrics for greenery exposure assessment.</li>
+			  <li>Developing an interactive online tool for communicating and visualising project outputs.</li>
+			  <li>Maintaining a GitHub repository for project scripts and documentation.</li>
+			  <li>Co-authoring policy brief/report.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            </span>
+
+            <div class="timeline-header">
+              <div class="timeline-role">
+                <span class="timeline-logo">
+                  <img src="assets/farnahad.jpg" alt="Institution logo" />
+                </span>
+
+                <div>
+                  <h3>Urban Planner</h3>
+                  <a href="#" target="_blank" rel="noreferrer">
+                    Farnahd Urbanism & Architecture Consultant firm
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="timeline-meta">
+                <span class="timeline-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  2021 — 2023
+                </span>
+
+                <span class="timeline-location">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Tehran, Iran
+                </span>
+              </div>
+            </div>
+
+            <ul>
+              <li>Collecting data through primary survey, focus group discussions and Public Participation GIS (PPGIS).</li>
+              <li>Creation of new data using satellite images, OSM, survey data, social media data, etc.</li>
+              <li>Stakeholder meeting arrangements at the district level.</li>
+			  <li>Statistical analysis.</li>
+			  <li> Contributing to the Action Plan (AP) and a feasible study.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"></path><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"></path></svg>
+            </span>
+
+            <div class="timeline-header">
+              <div class="timeline-role">
+                <span class="timeline-logo">
+                  <img src="assets/khu.png" alt="Institution logo" />
+                </span>
+
+                <div>
+                  <h3>Research Assistant</h3>
+                  <a href="https://khu.ac.ir/en" target="_blank" rel="noreferrer">
+                    Kharazmi University
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="timeline-meta">
+                <span class="timeline-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  2019 — 2021
+                </span>
+
+                <span class="timeline-location">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Tehran, Iran
+                </span>
+              </div>
+            </div>
+
+            <ul>
+              <li>Reading and summarising policy documentation and previous ecological resilience-related projects.</li>
+              <li>Data collection through surveys, digitising and real-time data sources.</li>
+              <li>Segmentation and classification of remote sensing images.</li>
+			  <li>Qualitative validation of GIS models using questionnaires and interviewing techniques.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-heading-row">
+            <span class="section-number">03.</span>
+            <h2>Projects</h2>
+            <span class="section-heading-line"></span>
+          </div>
+
+          <p>
+            Click any project to view more information.
+          </p>
+        </div>
+
+        <div class="projects">
+          <article
+            class="project project-clickable"
+            data-type="project"
+            data-title="G-15 project"
+            data-meta="2024—Present · interdisciplinary research project"
+            data-image="assets/G-15.jpg"
+            data-description="In practice, the 15-minute city model is a planning theory for urban cores in which land-use mix and densification create environments where everyday destinations are within a short walk or bike ride. In G-15, we revisit debates around chrono-urbanism and nature exposure, addressing tensions between densification and quantity/quality of greenery exposure in habitual movements. ||Using a novel combination of deep learning, big spatial data analysis and participatory mapping, the project aims to map fine-grained potential/actual pedestrian-level accessibility to daily needs, predict human-scale travel greenery exposure and eventually identify related societal and health inequalities among different population groups. The research will generate actionable insights to guide policymakers in (re) designing healthier urban spaces."
+            data-link="https://github.com/yourusername/project-atlas"
+            tabindex="0"
+          >
+            <img
+              class="project-image"
+              src="assets/G-15.jpg"
+              alt=""
+            />
+
+            <div class="project-number">
+              <span>01</span>
+              <span>2024—Present</span>
+            </div>
+
+            <h3>G-15 project</h3>
+
+            <p>
+              The G-15 (the green 15-minute city:  nature contact in daily life experience) project focuses on analysing people’s everyday mobilities 
+              in urban environments and their exposure to greenery during these travels.
+            </p>
+
+            <span class="project-more">
+              View details <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+            </span>
+          </article>
+
+          <article
+            class="project project-clickable"
+            data-type="project"
+            data-title="COCHALLENGE project"
+            data-meta="2021—2024 · Research Initiative"
+            data-image="assets/COCHALLENGE.jpg"
+            data-description="Open Research Lab develops open tools, datasets, and educational resources that make academic research more reproducible, accessible, and collaborative."
+            data-link="https://github.com/yourusername/open-research-lab"
+            tabindex="0"
+          >
+            <img
+              class="project-image"
+              src="assets/COCHALLENGE.jpg"
+              alt=""
+            />
+
+            <div class="project-number">
+              <span>02</span>
+              <span>2021—2024</span>
+            </div>
+
+            <h3>COCHALLENGE project</h3>
+
+            <p>
+              The COCHALLENGE (co-creation of approaches and solutions for sustainable development in challenged neighbourhoods) is a transformative urban planning initiative aiming to co-create approaches and solutions for inclusive and fairer urban development in deprived neighbourhoods and informal settlements by engaging residents and several other relevant sectors. 
+            </p>
+
+            <span class="project-more">
+              View details <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+            </span>
+          </article>
+
+          <article
+            class="project project-clickable"
+            data-type="project"
+            data-title="Urban ecological resilience assessment (UERA)"
+            data-meta="2019—2021 · Interdisciplinary Program"
+            data-image="assets/UERA.jpg"
+            data-description="Tech for Society connects researchers, communities, and public-interest technology practitioners to develop technology that addresses social and environmental challenges."
+            data-link="https://example.com/tech-for-society"
+            tabindex="0"
+          >
+            <img
+              class="project-image"
+              src="assets/UERA.jpg"
+              alt=""
+            />
+
+            <div class="project-number">
+              <span>03</span>
+              <span>2019—2021</span>
+            </div>
+
+            <h3>Urban ecological resilience assessment(UERA)</h3>
+
+            <p>
+              UEARA is a multidisciplinary research program harnessing nature-based
+			  solutions and ecosystem services to tackle the rising climate-induced crisis in our cities.
+            </p>
+
+            <span class="project-more">
+              View details <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+            </span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-heading-row">
+            <span class="section-number">04.</span>
+            <h2>Selected Publications</h2>
+            <span class="section-heading-line"></span>
+          </div>
+
+          <p>
+            Click any publication to view more information.
+          </p>
+        </div>
+
+        <div class="publication-list">
+          <article
+            class="publication publication-clickable"
+            data-type="publication"
+            data-title="The 15-minute city in the Global South: Modeling spatial accessibility and measuring social equity across seven major Iranian cities"
+            data-meta="2025 · Journal"
+            data-authors="Babak Badakhshan, Ayyoob Sharifi, Samira Ramezani"
+            data-journal="Journal of Urban Mobility"
+            data-date="2025"
+            data-doi="10.1016/j.urbmob.2025.100168"
+            data-image="assets/paper3.jpg"
+            data-description="As cities around the globe strive to improve urban sustainability and resilience while tackling challenges like climate change, Moreno's 15-minute city model is becoming increasingly popular in urban planning research and practice. Several previous studies have applied different spatial modeling frameworks to assess whether contemporary cities align with the vision of this model. To date, few studies have focused on the applicability of this model in Global South cities. As such, further empirical research is required to advance our understanding of the global relevance of the 15-minute city concept beyond narratives predominantly rooted in Western urbanism.||Our study aims to fill this gap by operationalizing the model for seven major Iranian cities and highlighting the relationships between social exclusion and inequitable access to everyday needs. We show significant variation in the levels of walking access to different activity location categories within and across the study cities, with inner areas exhibiting better access and marginal areas showing poorer access to essential services. Furthermore, residents’ deprivation level was strongly associated with a higher probability of reaching everyday services beyond a 15-minute walk— except for two cities.||We discuss that although in study cities essential amenities are, to some extent, accessible within a 15-minute walk or bike ride, significant socio-cultural, institutional, and infrastructural barriers; such as, imposed restrictions on women’s cycling, inadequate active travel infrastructure, and the persistent non-recognition of walking as a legitimate mode of transportation continue to hinder the meaningful implementation of the model in Iranian context."
+            data-link="https://www.sciencedirect.com/science/article/pii/S2667091725000706"
+            tabindex="0"
+          >
+            <img
+              class="publication-thumb"
+              src="assets/urban-mobility.jpg"
+              alt=""
+            />
+
+            <span class="mono">2025 · Journal</span>
+
+            <div>
+              <h3>
+                The 15-minute city in the Global South: Modeling spatial accessibility and measuring social equity across seven major Iranian cities
+              </h3>
+
+              <p>
+                Babak Badakhshan, Ayyoob Sharifi, Samira Ramezani
+              </p>
+            </div>
+
+            <button class="publication-link">
+              View details <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+            </button>
+          </article>
+
+          <article
+            class="publication publication-clickable"
+            data-type="publication"
+            data-title="Urban heat in a very hot region: Exploring spatial inequality in exposure to extreme heat hazard in Tehran, Iran"
+            data-meta="2025 · Journal"
+            data-authors="Babak Badakhshan, Ayyoob Sharifi, Tajeddin Karami, Fatemeh Salehipour Bavarsad"
+            data-journal="Urban Climate"
+            data-date="2025"
+            data-doi="10.1016/j.uclim.2025.102480"
+            data-image="assets/paper2.jpg"
+            data-description="Cities are becoming hotter due to the synergistic effect of climate change and urban heat islands (UHI), posing serious health-related problems among vulnerable population groups. While urban heat vulnerability has gained significant scholarly attention worldwide, we still know little about which socio-demographic groups are disproportionately overexposed to extreme heat waves in hot and arid climatic areas– particularly in the Middle East.||To address this research gap, we bring the case of Tehran, Iran, during the two days of nationwide extreme temperature shutdown to examine which population groups were more likely to be over/underexposed to extreme heat hazard.||Our findings reveal a clear north-south gap in disproportionate exposure to extreme heat across the city sub-districts, highlighting the historical and intensifying income gap between poor and wealthier residents. In addition, we show that sub-districts with high elderly and female populations tend to have relatively low exposure to heat hazard and better access to both indoor and outdoor cooling infrastructure. On the other hand, our study indicates that children, immigrants, and illiterate residents are overexposed to extreme heat waves and have limited capacity to adapt due to inadequate cooling resources.||To date, the nationwide shutdown is how the government tries to protect at-risk population groups from constantly rising temperatures–with obviously no proper strategic plan or heat action guidelines. With the ongoing dramatic vision of global warming, we urge the government to implement socio-technical adaptation policies by prioritizing socio-economically disadvantaged neighborhoods in the heat mitigation agenda."
+            data-link="https://www.sciencedirect.com/science/article/pii/S2212095525001968"
+            tabindex="0"
+          >
+            <img
+              class="publication-thumb"
+              src="assets/urban-climate.jpg"
+              alt=""
+            />
+
+            <span class="mono">2025 · Journal</span>
+
+            <div>
+              <h3>
+                Urban heat in a very hot region: Exploring spatial inequality in exposure to extreme heat hazard in Tehran, Iran
+              </h3>
+
+              <p>
+                Babak Badakhshan, Ayyoob Sharifi, Tajeddin Karami, Fatemeh Salehipour Bavarsad
+              </p>
+            </div>
+
+            <button class="publication-link">
+              View details <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+            </button>
+          </article>
+
+          <article
+            class="publication publication-clickable"
+            data-type="publication"
+            data-title="Is life green on the other half? Linking urban green infrastructure to socio-economic inequality and spatial segregation in Tehran, Iran"
+            data-meta="2025 · Journal"
+            data-authors="Babak Badakhshan, Ayyoob Sharifi, Tajeddin Karami"
+            data-journal="Applied Geography"
+            data-date="2025"
+            data-doi="10.1016/j.apgeog.2025.103562"
+            data-image="assets/paper1.jpg"
+            data-description="Urban Green Infrastructure provides a wide range of ecosystem services that promote overall quality of life. However, these benefits are not always distributed equally across the urban regions or among different population groups.||The present study highlights urban green infrastructure inequality in the divided city of Tehran using occupation status data and open-source high-resolution satellite imagery.||Our results reveal that high-income occupation groups live separately from the bottom occupational groups in the city, with a clear north-south division reflected in the urban spatial structure. The top occupation groups residing in the north benefit from both high vegetation density and tree canopy cover in private spaces and public street verges and live closer to urban parks, whereas the bottom occupation groups in the south suffer from the uneven provision and distribution of urban nature advantages. The average proportion of bottom occupation groups in census tracts with >300 m distance from public parks is almost double that of top occupation groups.||The persistent historical north-south divide and environmental injustice further indicate that, over the decades, poorer citizens have been excluded from urban greening initiatives. Therefore, they should be brought back into the formal urban planning agenda to help rebuild an inclusive and sustainable city. We also highlight the potential of remote sensing techniques and occupation status data for studying environmental inequality across cities worldwide."
+            data-link="https://www.sciencedirect.com/science/article/abs/pii/S0143622825000578"
+            tabindex="0"
+          >
+            <img
+              class="publication-thumb"
+              src="assets/applied-geography.jpg"
+              alt=""
+            />
+
+            <span class="mono">2025 · Journal</span>
+
+            <div>
+              <h3>
+                Is life green on the other half? Linking urban green infrastructure to socio-economic inequality and spatial segregation in Tehran, Iran
+              </h3>
+
+              <p>
+                Babak Badakhshan, Ayyoob Sharifi, Tajeddin Karami
+              </p>
+            </div>
+
+            <button class="publication-link">
+              View details <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+            </button>
+          </article>
+        </div>
+
+        <div class="publication-list-footer">
+          <a
+            class="button secondary"
+            href="https://scholar.google.com/citations?hl=en&user=AZ8mkjMAAAAJ"
+            target="_blank"
+            rel="noreferrer"
+          >
+            View all publications <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Peer Review -->
+    <section id="peer-review">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-heading-row">
+            <span class="section-number">05.</span>
+            <h2>Peer Review</h2>
+            <span class="section-heading-line"></span>
+          </div>
+
+          <p>
+            Reviewing manuscripts and conference submissions to help
+            maintain rigor and quality across the field.
+          </p>
+        </div>
+
+        <div class="review-grid">
+          <div class="review-card">
+            <div class="review-top">
+              <span class="review-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></svg>
+              </span>
+              <span class="review-type">Journal</span>
+            </div>
+            <h3>Journal of Urban Mobility</h3>
+            <p class="review-publisher">Elsevier</p>
+            <div class="review-meta">
+              <span><span class="review-count">5</span> reviews</span>
+              <span>2022 – 2025</span>
+            </div>
+            <a
+              class="review-cert"
+              href="https://drive.google.com/file/d/1iWQczMQewxAw59jkL8zHQUMVYuoDjQ9r/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View certificate
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </a>
+          </div>
+
+          <div class="review-card">
+            <div class="review-top">
+              <span class="review-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></svg>
+              </span>
+              <span class="review-type">Journal</span>
+            </div>
+            <h3>Sustainable Cities and Society</h3>
+            <p class="review-publisher">Elsevier</p>
+            <div class="review-meta">
+              <span><span class="review-count">2</span> reviews</span>
+              <span>2023 – 2025</span>
+            </div>
+            <a
+              class="review-cert"
+              href="https://drive.google.com/file/d/1ngtDQg2ab5iwKzjzO9qGEw0dECnbIidv/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View certificate
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </a>
+          </div>
+
+          <div class="review-card">
+            <div class="review-top">
+              <span class="review-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></svg>
+              </span>
+              <span class="review-type">Journal</span>
+            </div>
+            <h3>Scientific Reports</h3>
+            <p class="review-publisher">Springer Nature</p>
+            <div class="review-meta">
+              <span><span class="review-count">1</span> reviews</span>
+              <span>2024 – Present</span>
+            </div>
+            <a
+              class="review-cert"
+              href="https://drive.google.com/file/d/1B8GA4Tfr8FFXKbo4zhVjw5S4NKQPYMJk/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View certificate
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </a>
+          </div>
+
+          <div class="review-card">
+            <div class="review-top">
+              <span class="review-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></svg>
+              </span>
+              <span class="review-type">Journal</span>
+            </div>
+            <h3>Urban Climate</h3>
+            <p class="review-publisher">Elsevier</p>
+            <div class="review-meta">
+              <span><span class="review-count">1</span> reviews</span>
+              <span>2024</span>
+            </div>
+            <a
+              class="review-cert"
+              href="https://drive.google.com/file/d/1nfYubjOfKQXivKi-JjsTAHorerbfBgjk/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View certificate
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </a>
+          </div>
+
+          <div class="review-card">
+            <div class="review-top">
+              <span class="review-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></svg>
+              </span>
+              <span class="review-type">Journal</span>
+            </div>
+            <h3>Geoforum</h3>
+            <p class="review-publisher">Elsevier</p>
+            <div class="review-meta">
+              <span><span class="review-count">1</span> reviews</span>
+              <span>2021 – 2024</span>
+            </div>
+            <a
+              class="review-cert"
+              href="https://drive.google.com/file/d/1-pdDjFLXPwudbh0M6bBlW67HIDP3maf8/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View certificate
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </a>
+          </div>
+
+          <div class="review-card">
+            <div class="review-top">
+              <span class="review-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></svg>
+              </span>
+              <span class="review-type">Journal</span>
+            </div>
+            <h3>GeoJournal</h3>
+            <p class="review-publisher">Springer Nature</p>
+            <div class="review-meta">
+              <span><span class="review-count">1</span> review</span>
+              <span>2025</span>
+            </div>
+            <a
+              class="review-cert"
+              href="https://drive.google.com/file/d/1ZyVsJZ61-iBt7HcVtyJijKvDI_Qbq0RN/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View certificate
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News -->
+    <section id="news">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-heading-row">
+            <span class="section-number">06.</span>
+            <h2>News &amp; Writing</h2>
+            <span class="section-heading-line"></span>
+          </div>
+
+          <p>
+            Click any news item to view more information.
+          </p>
+        </div>
+
+        <div class="news-list">
+          <article
+            class="news-card news-clickable"
+            data-type="news"
+            data-title="New paper accepted at an international conference."
+            data-meta="September 2026"
+            data-description="This open-access article, led by me and colleagues from the University of Queensland and the University of Groningen, examines the (mis)alignment of seven major Iranian cities with the 15-minute city model and analyses how less walking accessibility intersects with social disadvantage.
+			||The study evaluates walkable access to essential services, including education, entertainment, grocery, health services, postal and banking facilities, parks, sustenance, and shops, and links it to a multidimensional deprivation index that includes: employment status; migration background; illiteracy rate; family size and population density.
+			||This approach reveals how spatial accessibility and social (dis)advantage are intertwined."
+            data-image="assets/news3.jpg"
+            data-link="https://www.sciencedirect.com/science/article/pii/S2667091725000706#abs0001"
+            tabindex="0"
+          >
+            <span class="mono">December 2025</span>
+
+            <h3>
+              New paper accepted at an international conference.
+            </h3>
+
+            <p>
+              Curious about the implementation of the 15-minute city concept in Global South cities?! Then see my latest paper, just published in the Journal of Urban Mobility.
+            </p>
+
+            <span class="news-more">
+              View details <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+            </span>
+          </article>
+
+          <article
+            class="news-card news-clickable"
+            data-type="news"
+            data-title="Starting a new position at Shahrpat."
+            data-meta="November 2024"
+            data-description="From next month onward, I will be working as a full-time big data scientist at Shahrpat Institute. The position requires someone with a background in data science and artificial intelligence to retrieve/manage large-scale, cross-source data from social media and other online sources, and apply AI-driven models to extract meaningful information on people's everyday experiences and mobility behaviours in urban spaces, as well as nature visitations. I will also help design and deploy surveys and PPGIS methodology for additional data collection, while providing decision-making tools for policymakers and stakeholders to support evidence-based planning."
+            data-image="assets/news2.jpg"
+            data-link="https://example.com/news-2"
+            tabindex="0"
+          >
+            <span class="mono">November 2024</span>
+
+            <h3>
+              Starting a new position at Shahrpat.
+            </h3>
+
+            <p>
+              I am now a Data Scientist at Shahrpat Institute, bringing my years of experience in big data analytics to meaningful and practical solutions for urban policymakers.
+            </p>
+
+            <span class="news-more">
+              View details <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+            </span>
+          </article>
+
+          <article
+            class="news-card news-clickable"
+            data-type="news"
+            data-title="A new interdisciplinary research project started."
+            data-meta="March 2026"
+            data-description="🌿 G-15 has officially kicked off! ||Nature contact in daily life isn't a luxury—it's a public health and urban design priority, and it's the driving idea behind G-15, the green 15-minute city project focused on bringing nature into daily urban movement.
+			||We're inviting stakeholders and urban professionals involved in the project to a meeting on Monday, October 5, at 14:00 at Tehran Municipality (City Hall). The session will bring participants together to discuss and plan the first steps, including priorities, roles, and timelines. It will close with a panel Q&A on the project's vision, future directions, and the ways to achieve its objectives, where participants can put their questions directly to the project team and invited experts. Whether you work in planning, design, health, environment, or policy, we'd love to have you in the conversation. Please confirm your attendance by emailing g15project@tehran.ir by September 30.
+			||#G15 #15MinuteCity #GreenCities #UrbanPlanning"
+            data-image="assets/news1.jpg"
+            data-link="https://example.com/news-3"
+            tabindex="0"
+          >
+            <span class="mono">October 2023 </span>
+
+            <h3>
+              A new interdisciplinary research project started.
+            </h3>
+
+            <p>
+              We officially launched our newly founded project "G-15" by bringing together key stakeholders and practitioners for a two days of discussion and planning.
+            </p>
+
+            <span class="news-more">
+              View details <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+            </span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-heading-row">
+            <span class="section-number">07.</span>
+            <h2>Contact</h2>
+            <span class="section-heading-line"></span>
+          </div>
+        </div>
+
+        <div class="contact">
+        <div class="contact-tagline">
+            <p>
+              I am interested in hearing from students willing to conduct research at the nexus of sustainable urban mobility, environmental exposure, and geospatial data science. Please contact me with your initial research ideas, and I would be happy to discuss my potential contribution through joint authorship or mentorship on publications in highly reputable international journals.
+            </p>
+            <p>
+              I also welcome teaching opportunities, and engaging with students from different backgrounds often sparks new ideas for my research.
+            </p>
+          </div>
+
+        <div class="contact-links">
+          <a
+            class="contact-link"
+            href="mailto:babakbadakhshan98@gmail.com"
+          >
+            <span>Email</span>
+            <span><svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
+          </a>
+
+          <a
+            class="contact-link"
+            href="https://github.com/babakbadakhshan"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>GitHub</span>
+            <span><svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
+          </a>
+
+          <a
+            class="contact-link"
+            href="https://www.linkedin.com/in/babak-badakhshan"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>LinkedIn</span>
+            <span><svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
+          </a>
+
+          <a
+            class="contact-link"
+            href="https://scholar.google.com/citations?hl=en&user=AZ8mkjMAAAAJ"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>Google Scholar</span>
+            <span><svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></span>
+          </a>
+        </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Details modal -->
+  <div
+    class="modal"
+    id="detailsModal"
+    aria-hidden="true"
+  >
+    <div
+      class="modal-overlay"
+      data-close-modal
+    ></div>
+
+    <div
+      class="modal-content"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <button
+        class="modal-close"
+        aria-label="Close details"
+      >
+        ×
+      </button>
+
+      <span class="mono" id="modalMeta"></span>
+
+      <img
+        id="modalImage"
+        class="modal-image"
+        src=""
+        alt=""
+        style="display: none"
+      />
+
+      <h2 id="modalTitle"></h2>
+
+      <div class="modal-fields" id="modalFields">
+        <div class="modal-field" id="modalAuthorsField">
+          <span class="modal-field-label">Authors</span>
+          <p
+            id="modalAuthors"
+            class="modal-field-value"
+          ></p>
+        </div>
+
+        <div class="modal-field" id="modalJournalField">
+          <span class="modal-field-label">Journal</span>
+          <p
+            id="modalJournal"
+            class="modal-field-value"
+          ></p>
+        </div>
+
+        <div class="modal-field" id="modalDateField">
+          <span class="modal-field-label">Publication date</span>
+          <p
+            id="modalDate"
+            class="modal-field-value"
+          ></p>
+        </div>
+
+        <div class="modal-field" id="modalDoiField">
+          <span class="modal-field-label">DOI</span>
+          <p class="modal-field-value">
+            <a
+              id="modalDoi"
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+            ></a>
+          </p>
+        </div>
+      </div>
+
+      <div class="modal-field" id="modalDescriptionField">
+        <span class="modal-field-label">Description</span>
+        <div
+          id="modalDescription"
+          class="modal-field-value modal-description"
+        ></div>
+      </div>
+
+      <a
+        id="modalLink"
+        class="button primary"
+        href="#"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Open link <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      © 2026 Babak Badakhshan · Built with HTML, CSS, and curiosity.
+    </div>
+  </footer>
+
+  <script>
+    /* Mobile menu */
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+      });
+    });
+
+    /* Highlight the nav link of the section currently in view */
+
+    const navAnchors = [...document.querySelectorAll(".nav-links a[href^='#']")];
+    const navSections = navAnchors
+      .map((a) => document.querySelector(a.getAttribute("href")))
+      .filter(Boolean);
+
+    function updateActiveNav() {
+      const header = document.querySelector(".site-header");
+      const offset = (header ? header.offsetHeight : 76) + 40;
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 4;
+
+      let current = null;
+
+      navSections.forEach((section) => {
+        if (section.getBoundingClientRect().top <= offset) {
+          current = section;
+        }
+      });
+
+      if (atBottom && navSections.length) {
+        current = navSections[navSections.length - 1];
+      }
+
+      navAnchors.forEach((a) => {
+        const isActive =
+          current && a.getAttribute("href") === "#" + current.id;
+        a.classList.toggle("active", Boolean(isActive));
+
+        if (isActive) {
+          a.setAttribute("aria-current", "true");
+        } else {
+          a.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    let navTicking = false;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (navTicking) return;
+        navTicking = true;
+        requestAnimationFrame(() => {
+          updateActiveNav();
+          navTicking = false;
+        });
+      },
+      { passive: true }
+    );
+
+    window.addEventListener("resize", updateActiveNav);
+    updateActiveNav();
+
+    /* Dark mode */
+
+    const themeToggle = document.querySelector(".theme-toggle");
+
+    function updateThemeButton() {
+      const darkMode = document.body.classList.contains("dark-mode");
+
+      themeToggle.setAttribute(
+        "aria-label",
+        darkMode
+          ? "Switch to light mode"
+          : "Switch to dark mode"
+      );
+    }
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (
+      savedTheme === "dark" ||
+      (
+        !savedTheme &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      )
+    ) {
+      document.body.classList.add("dark-mode");
+    }
+
+    updateThemeButton();
+
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+
+      const currentTheme =
+        document.body.classList.contains("dark-mode")
+          ? "dark"
+          : "light";
+
+      localStorage.setItem("theme", currentTheme);
+
+      updateThemeButton();
+    });
+
+    /* Publication and project modal */
+
+    const modal = document.querySelector("#detailsModal");
+    const modalTitle = document.querySelector("#modalTitle");
+    const modalMeta = document.querySelector("#modalMeta");
+    const modalImage = document.querySelector("#modalImage");
+    const modalFields = document.querySelector("#modalFields");
+    const modalAuthorsField = document.querySelector("#modalAuthorsField");
+    const modalAuthors = document.querySelector("#modalAuthors");
+    const modalJournalField = document.querySelector("#modalJournalField");
+    const modalJournal = document.querySelector("#modalJournal");
+    const modalDateField = document.querySelector("#modalDateField");
+    const modalDate = document.querySelector("#modalDate");
+    const modalDoiField = document.querySelector("#modalDoiField");
+    const modalDoi = document.querySelector("#modalDoi");
+    const modalDescription = document.querySelector("#modalDescription");
+    const modalLink = document.querySelector("#modalLink");
+    const modalClose = document.querySelector(".modal-close");
+
+    const detailCards = document.querySelectorAll(
+      ".publication-clickable, .project-clickable, .news-clickable"
+    );
+
+    function openModal(card) {
+      const title = card.dataset.title;
+      const meta = card.dataset.meta;
+      const authors = card.dataset.authors;
+      const journal = card.dataset.journal;
+      const date = card.dataset.date;
+      const doi = card.dataset.doi;
+      const image = card.dataset.image;
+      const description = card.dataset.description;
+      const link = card.dataset.link;
+      const type = card.dataset.type;
+
+      modalTitle.textContent = title;
+      modalDescription.innerHTML = "";
+      (description || "").split("||").forEach((text) => {
+        const t = text.trim();
+        if (!t) return;
+        const p = document.createElement("p");
+
+        // Turn email addresses into blue mailto links (built as DOM nodes, not HTML)
+        const emailPattern = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g;
+        let lastIndex = 0;
+        let match;
+
+        while ((match = emailPattern.exec(t)) !== null) {
+          p.appendChild(document.createTextNode(t.slice(lastIndex, match.index)));
+          const a = document.createElement("a");
+          a.href = "mailto:" + match[0];
+          a.textContent = match[0];
+          p.appendChild(a);
+          lastIndex = match.index + match[0].length;
+        }
+
+        p.appendChild(document.createTextNode(t.slice(lastIndex)));
+        modalDescription.appendChild(p);
+      });
+
+      if (image) {
+        modalImage.src = image;
+        modalImage.alt = title || "";
+        modalImage.style.display = "block";
+      } else {
+        modalImage.src = "";
+        modalImage.style.display = "none";
+      }
+
+      if (type === "publication") {
+        modalMeta.textContent = "";
+        modalMeta.style.display = "none";
+
+        modalAuthors.textContent = authors || "";
+        modalAuthorsField.style.display = authors ? "flex" : "none";
+
+        modalJournal.textContent = journal || "";
+        modalJournalField.style.display = journal ? "flex" : "none";
+
+        modalDate.textContent = date || "";
+        modalDateField.style.display = date ? "flex" : "none";
+
+        if (doi) {
+          const doiUrl = doi.startsWith("http")
+            ? doi
+            : `https://doi.org/${doi}`;
+
+          modalDoi.textContent = doi;
+          modalDoi.href = doiUrl;
+          modalDoiField.style.display = "flex";
+        } else {
+          modalDoi.textContent = "";
+          modalDoi.href = "#";
+          modalDoiField.style.display = "none";
+        }
+
+        modalFields.style.display = "grid";
+      } else {
+        modalMeta.textContent = meta;
+        modalMeta.style.display = "block";
+
+        modalFields.style.display = "none";
+      }
+
+      if (link && link !== "#") {
+        modalLink.href = link;
+        modalLink.style.display = "inline-flex";
+      } else {
+        modalLink.style.display = "none";
+      }
+
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+
+      modalClose.focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+    }
+
+    detailCards.forEach((card) => {
+      card.addEventListener("click", (event) => {
+        if (event.target.closest("a")) {
+          return;
+        }
+
+        openModal(card);
+      });
+
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openModal(card);
+        }
+      });
+    });
+
+    modalClose.addEventListener("click", closeModal);
+
+    document
+      .querySelector("[data-close-modal]")
+      .addEventListener("click", closeModal);
+
+    document.addEventListener("keydown", (event) => {
+      if (
+        event.key === "Escape" &&
+        modal.classList.contains("active")
+      ) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>

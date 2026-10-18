@@ -100,10 +100,19 @@
       border-bottom: 1px solid var(--line);
       background: rgba(245, 245, 240, 0.9);
       backdrop-filter: blur(14px);
+      transition: box-shadow 0.25s ease;
+    }
+
+    .site-header.scrolled {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
     }
 
     body.dark-mode .site-header {
       background: rgba(17, 17, 17, 0.9);
+    }
+
+    body.dark-mode .site-header.scrolled {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
     }
 
     .nav {
@@ -1348,9 +1357,10 @@
     }
 
     .modal-field-label {
+      margin-bottom: 8px;
       color: var(--muted);
       font-family: "DM Mono", monospace;
-      font-size: 0.7rem;
+      font-size: 0.78rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -1362,6 +1372,25 @@
     .modal-field-value a {
       color: var(--accent-dark);
       text-decoration: underline;
+    }
+
+    .modal-divider {
+      margin-bottom: 30px;
+      border-top: 1px solid var(--line);
+    }
+
+    .modal-field.modal-field-full {
+      grid-column: 1 / -1;
+    }
+
+    .modal-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .modal-links a {
+      word-break: break-all;
     }
 
     .modal-description {
@@ -1814,7 +1843,7 @@
 
                 <div>
                   <h3>Data Scientist & Big Data Analyst</h3>
-                  <a href="#" target="_blank" rel="noreferrer">
+                  <a href="https://rpc.tehran.ir/en" target="_blank" rel="noreferrer">
                     Tehran Urban Research and Planning Centre
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
                   </a>
@@ -1997,9 +2026,12 @@
             data-type="project"
             data-title="G-15 project"
             data-meta="2024—Present · interdisciplinary research project"
+            data-status="Ongoing"
+            data-period="2024—Present"
+            data-project-type="Interdisciplinary research project"
             data-image="assets/G-15.jpg"
             data-description="In practice, the 15-minute city model is a planning theory for urban cores in which land-use mix and densification create environments where everyday destinations are within a short walk or bike ride. In G-15, we revisit debates around chrono-urbanism and nature exposure, addressing tensions between densification and quantity/quality of greenery exposure in habitual movements. ||Using a novel combination of deep learning, big spatial data analysis and participatory mapping, the project aims to map fine-grained potential/actual pedestrian-level accessibility to daily needs, predict human-scale travel greenery exposure and eventually identify related societal and health inequalities among different population groups. The research will generate actionable insights to guide policymakers in (re) designing healthier urban spaces."
-            data-link="https://github.com/yourusername/project-atlas"
+            data-link="https://rpc.tehran.ir/enhttps://rpc.tehran.ir/en/Cooperation/Joint-Projects"
             tabindex="0"
           >
             <img
@@ -2030,9 +2062,12 @@
             data-type="project"
             data-title="COCHALLENGE project"
             data-meta="2021—2024 · Research Initiative"
+            data-status="Completed"
+            data-period="2021—2024"
+            data-project-type="Research initiative"
             data-image="assets/COCHALLENGE.jpg"
             data-description="Open Research Lab develops open tools, datasets, and educational resources that make academic research more reproducible, accessible, and collaborative."
-            data-link="https://github.com/yourusername/open-research-lab"
+            data-link="https://civil.karaj.ir/"
             tabindex="0"
           >
             <img
@@ -2062,9 +2097,12 @@
             data-type="project"
             data-title="Urban ecological resilience assessment (UERA)"
             data-meta="2019—2021 · Interdisciplinary Program"
+            data-status="Completed"
+            data-period="2019—2021"
+            data-project-type="Interdisciplinary program"
             data-image="assets/UERA.jpg"
             data-description="Tech for Society connects researchers, communities, and public-interest technology practitioners to develop technology that addresses social and environmental challenges."
-            data-link="https://example.com/tech-for-society"
+            data-link="https://tehran.doe.ir/"
             tabindex="0"
           >
             <img
@@ -2597,6 +2635,8 @@
 
       <h2 id="modalTitle"></h2>
 
+      <div class="modal-divider" id="modalDivider" style="display: none"></div>
+
       <div class="modal-fields" id="modalFields">
         <div class="modal-field" id="modalAuthorsField">
           <span class="modal-field-label">Authors</span>
@@ -2633,6 +2673,26 @@
             ></a>
           </p>
         </div>
+
+        <div class="modal-field" id="modalStatusField">
+          <span class="modal-field-label">Status</span>
+          <p id="modalStatus" class="modal-field-value"></p>
+        </div>
+
+        <div class="modal-field" id="modalPeriodField">
+          <span class="modal-field-label">Period</span>
+          <p id="modalPeriod" class="modal-field-value"></p>
+        </div>
+
+        <div class="modal-field" id="modalProjectTypeField">
+          <span class="modal-field-label">Type</span>
+          <p id="modalProjectType" class="modal-field-value"></p>
+        </div>
+
+        <div class="modal-field" id="modalProjectLinkField">
+          <span class="modal-field-label">Links</span>
+          <div id="modalProjectLinks" class="modal-field-value modal-links"></div>
+        </div>
       </div>
 
       <div class="modal-field" id="modalDescriptionField">
@@ -2662,6 +2722,17 @@
   </footer>
 
   <script>
+    /* Header shadow when scrolled */
+
+    const siteHeader = document.querySelector(".site-header");
+
+    function updateHeaderShadow() {
+      siteHeader.classList.toggle("scrolled", window.scrollY > 8);
+    }
+
+    window.addEventListener("scroll", updateHeaderShadow, { passive: true });
+    updateHeaderShadow();
+
     /* Mobile menu */
 
     const menuToggle = document.querySelector(".menu-toggle");
@@ -2791,6 +2862,15 @@
     const modalDate = document.querySelector("#modalDate");
     const modalDoiField = document.querySelector("#modalDoiField");
     const modalDoi = document.querySelector("#modalDoi");
+    const modalStatusField = document.querySelector("#modalStatusField");
+    const modalStatus = document.querySelector("#modalStatus");
+    const modalPeriodField = document.querySelector("#modalPeriodField");
+    const modalPeriod = document.querySelector("#modalPeriod");
+    const modalProjectTypeField = document.querySelector("#modalProjectTypeField");
+    const modalProjectType = document.querySelector("#modalProjectType");
+    const modalProjectLinkField = document.querySelector("#modalProjectLinkField");
+    const modalProjectLinks = document.querySelector("#modalProjectLinks");
+    const modalDivider = document.querySelector("#modalDivider");
     const modalDescription = document.querySelector("#modalDescription");
     const modalLink = document.querySelector("#modalLink");
     const modalClose = document.querySelector(".modal-close");
@@ -2845,7 +2925,64 @@
         modalImage.style.display = "none";
       }
 
-      if (type === "publication") {
+      const isProject = type === "project";
+      const isPublication = type === "publication";
+
+      // Reset project-only fields
+      [modalStatusField, modalPeriodField, modalProjectTypeField, modalProjectLinkField].forEach(
+        (el) => (el.style.display = "none")
+      );
+
+      if (isProject) {
+        modalMeta.textContent = "";
+        modalMeta.style.display = "none";
+
+        [modalAuthorsField, modalJournalField, modalDateField, modalDoiField].forEach(
+          (el) => (el.style.display = "none")
+        );
+
+        const status = card.dataset.status;
+        const period = card.dataset.period;
+        const projectType = card.dataset.projectType;
+
+        modalStatus.textContent = status || "";
+        modalStatusField.style.display = status ? "flex" : "none";
+
+        modalPeriod.textContent = period || "";
+        modalPeriodField.style.display = period ? "flex" : "none";
+
+        modalProjectType.textContent = projectType || "";
+        modalProjectTypeField.style.display = projectType ? "flex" : "none";
+
+        // Main link (data-link) plus optional extra links (data-links="Label|URL;;Label|URL")
+        const projectLinks = [];
+        if (link && link !== "#") {
+          projectLinks.push({ label: link, url: link });
+        }
+        (card.dataset.links || "")
+          .split(";;")
+          .map((item) => item.trim())
+          .filter(Boolean)
+          .forEach((item) => {
+            const [label, url] = item.includes("|")
+              ? item.split("|").map((x) => x.trim())
+              : [item, item];
+            if (url) projectLinks.push({ label: label || url, url });
+          });
+
+        modalProjectLinks.innerHTML = "";
+        projectLinks.forEach(({ label, url }) => {
+          const a = document.createElement("a");
+          a.href = url;
+          a.target = "_blank";
+          a.rel = "noreferrer";
+          a.textContent = label;
+          modalProjectLinks.appendChild(a);
+        });
+        modalProjectLinkField.style.display = projectLinks.length ? "flex" : "none";
+
+        modalFields.style.display = "grid";
+      } else if (isPublication) {
         modalMeta.textContent = "";
         modalMeta.style.display = "none";
 
@@ -2874,13 +3011,16 @@
 
         modalFields.style.display = "grid";
       } else {
-        modalMeta.textContent = meta;
-        modalMeta.style.display = "block";
+        modalMeta.textContent = "";
+        modalMeta.style.display = "none";
 
         modalFields.style.display = "none";
       }
 
-      if (link && link !== "#") {
+      modalDivider.style.display = isProject || isPublication ? "none" : "block";
+
+      // No "Open link" button on publications or projects (projects show a Link field instead)
+      if (!isPublication && !isProject && link && link !== "#") {
         modalLink.href = link;
         modalLink.style.display = "inline-flex";
       } else {

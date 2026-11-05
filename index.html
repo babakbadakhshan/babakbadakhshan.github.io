@@ -91,92 +91,108 @@
       text-transform: uppercase;
     }
 
-    /* Header */
+    /* Header: floating rounded bar */
 
     .site-header {
       position: sticky;
       top: 0;
       z-index: 10;
-      border-bottom: 1px solid var(--line);
-      background: rgba(245, 245, 240, 0.9);
-      backdrop-filter: blur(14px);
-      transition: box-shadow 0.25s ease;
-    }
-
-    .site-header.scrolled {
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
-    }
-
-    body.dark-mode .site-header {
-      background: rgba(17, 17, 17, 0.9);
-    }
-
-    body.dark-mode .site-header.scrolled {
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+      padding: 14px 0;
+      background: transparent;
+      pointer-events: none;
     }
 
     .nav {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 76px;
+      gap: 16px;
+      min-height: 64px;
+      padding: 0 12px 0 14px;
+      border-radius: 20px;
+      background: rgba(245, 245, 240, 0.9);
+      box-shadow: 0 6px 24px -10px rgba(0, 0, 0, 0.12);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      pointer-events: auto;
+      transition: box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .site-header.scrolled .nav {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    body.dark-mode .nav {
+      background: rgba(17, 17, 17, 0.9);
+    }
+
+    body.dark-mode .site-header.scrolled .nav {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
     }
 
     .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
       font-size: 1.05rem;
       font-weight: 800;
       letter-spacing: -0.04em;
+      white-space: nowrap;
     }
 
-    .brand span {
-      color: var(--accent-dark);
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    body.dark-mode .brand-logo {
+      box-shadow: 0 0 0 1px var(--line);
     }
 
     .nav-links {
       display: flex;
-      gap: 24px;
+      align-items: center;
+      gap: 2px;
+      margin: 0 auto;
       list-style: none;
-      color: var(--text);
-      font-size: 0.82rem;
-      font-weight: 600;
+      font-size: 0.9rem;
+      font-weight: 700;
     }
 
     .nav-links a {
-      position: relative;
       display: inline-block;
-      padding-bottom: 4px;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent-dark);
-      transition: width 0.25s ease;
-    }
-
-    body.dark-mode .nav-links a::after {
-      background: var(--accent);
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
+      padding: 9px 14px;
+      border-radius: 999px;
       color: var(--text);
+      white-space: nowrap;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
     }
 
-    .nav-links a:hover::after,
-    .nav-links a.active::after {
-      width: 100%;
+    .nav-links a:hover {
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    body.dark-mode .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-links a.active,
+    .nav-links a.active:hover {
+      background: var(--accent);
+      color: var(--on-accent);
     }
 
     .theme-toggle {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-left: 20px;
+      flex-shrink: 0;
       width: 38px;
       height: 38px;
       padding: 0;
@@ -184,8 +200,6 @@
       border-radius: 999px;
       background: transparent;
       color: var(--text);
-      font-family: "DM Mono", monospace;
-      font-size: 0.7rem;
       cursor: pointer;
       transition: 0.2s ease;
     }
@@ -220,6 +234,202 @@
       color: var(--text);
       font-size: 1.5rem;
       cursor: pointer;
+    }
+
+    /* Header dropdown: Peer Review, News, Recommendations */
+
+    .nav-dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-dropdown:hover {
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    body.dark-mode .nav-dropdown:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-dropdown.active,
+    .nav-dropdown.active:hover {
+      background: var(--accent);
+      color: var(--on-accent);
+    }
+
+    .nav-links .nav-dropdown-main,
+    .nav-links .nav-dropdown-main:hover,
+    .nav-links .nav-dropdown-main.active,
+    .nav-links .nav-dropdown-main.active:hover {
+      padding-right: 6px;
+      background: transparent;
+      color: inherit;
+    }
+
+    .nav-dropdown-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 34px;
+      padding: 0 8px 0 2px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .nav-dropdown-toggle svg {
+      transition: transform 0.2s ease;
+    }
+
+    .nav-dropdown.open .nav-dropdown-toggle svg {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown-toggle:focus-visible,
+    .nav-submenu a:focus-visible {
+      outline: 2px solid var(--accent-dark);
+      outline-offset: 2px;
+    }
+
+    .nav-submenu {
+      display: none;
+      list-style: none;
+    }
+
+    .nav-dropdown.open .nav-submenu {
+      display: block;
+    }
+
+    @media (min-width: 1101px) {
+      .nav-submenu {
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 50%;
+        display: block;
+        min-width: 210px;
+        padding: 8px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--surface);
+        box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-50%, 6px);
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s ease,
+          visibility 0.2s;
+      }
+
+      /* keeps the menu open while the pointer crosses the gap */
+      .nav-submenu::before {
+        content: "";
+        position: absolute;
+        top: -14px;
+        right: 0;
+        left: 0;
+        height: 14px;
+      }
+
+      .nav-dropdown.open .nav-submenu {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, 0);
+      }
+
+      @media (hover: hover) {
+        .nav-dropdown:hover .nav-submenu {
+          opacity: 1;
+          visibility: visible;
+          transform: translate(-50%, 0);
+        }
+      }
+
+      .nav-submenu a {
+        display: block;
+        padding: 10px 14px;
+        border-radius: 10px;
+      }
+    }
+
+    /* Header: collapse to a dropdown on narrower screens */
+
+    @media (max-width: 1100px) {
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        left: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+        margin: 0;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--surface);
+        box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.35);
+        font-size: 0.9rem;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 12px 16px;
+      }
+
+      .nav-dropdown,
+      .nav-dropdown:hover,
+      .nav-dropdown.active,
+      .nav-dropdown.active:hover {
+        flex-wrap: wrap;
+        background: transparent;
+      }
+
+      .nav-links .nav-dropdown.active > a.nav-dropdown-main {
+        background: var(--accent);
+        color: var(--on-accent);
+      }
+
+      .nav-links .nav-dropdown:not(.active) > a.nav-dropdown-main:hover {
+        background: rgba(0, 0, 0, 0.06);
+      }
+
+      body.dark-mode .nav-links .nav-dropdown:not(.active) > a.nav-dropdown-main:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-dropdown-main {
+        flex: 1;
+      }
+
+      .nav-dropdown-toggle {
+        width: 48px;
+        height: 44px;
+      }
+
+      .nav-submenu {
+        flex-basis: 100%;
+        padding-left: 12px;
+      }
+
+      .theme-toggle {
+        margin-left: auto;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
     }
 
     /* Hero */
@@ -507,7 +717,7 @@
       margin-top: 40px;
     }
 
-    /* Peer Review */
+    /* Peer Review: framed image tiles */
 
     .review-grid {
       display: grid;
@@ -518,114 +728,226 @@
     .review-card {
       display: flex;
       flex-direction: column;
-      padding: 28px;
+      overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 16px;
       background: var(--surface);
-      transition: 0.25s ease;
     }
 
-    .review-card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.25);
+    .review-card[hidden] {
+      display: none;
     }
 
-    .review-top {
+    .review-grid {
+      cursor: grab;
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .review-grid.dragging {
+      cursor: grabbing;
+    }
+
+    .review-grid img,
+    .review-grid a {
+      -webkit-user-drag: none;
+    }
+
+    .review-slider[data-desktop="2"] .review-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 1100px) {
+      .review-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .review-controls {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-bottom: 18px;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 28px;
     }
 
-    .review-icon {
-      display: inline-flex;
+    .review-controls[hidden] {
+      display: none;
+    }
+
+    .review-dots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    /* News banners */
+
+    .review-slider[data-desktop="1"] .review-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .news-banner {
+      display: grid;
+      grid-template-columns: 1fr minmax(0, 40%);
+      min-height: 270px;
+      overflow: hidden;
+      border-radius: 14px;
+      background: color-mix(in srgb, var(--text) 5%, var(--bg));
+      cursor: pointer;
+    }
+
+    .news-banner[hidden] {
+      display: none;
+    }
+
+    .news-banner:focus-visible {
+      outline: 2px solid var(--accent-dark);
+      outline-offset: 3px;
+    }
+
+    .news-banner-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 32px 36px;
+    }
+
+    .news-banner-text h3 {
+      margin-bottom: 16px;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .news-banner-text p {
+      max-width: 520px;
+      font-size: 1rem;
+      line-height: 1.45;
+    }
+
+    .news-banner-date {
+      margin-top: 22px;
+      font-size: 0.8rem;
+    }
+
+    .news-banner-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 999px 0 0 999px;
+      box-shadow: -14px 0 40px -10px rgba(0, 0, 0, 0.28);
+    }
+
+    /* the picture fills its box but never decides the banner's height */
+    .news-banner-image img {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .news-banner-image.no-img {
+      display: flex;
       align-items: center;
       justify-content: center;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: var(--bg);
-      color: var(--accent-dark);
-      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--bg) 100%);
     }
 
-    body.dark-mode .review-icon {
-      color: var(--accent);
+    .news-banner-image.no-img img {
+      display: none;
     }
 
-    .review-icon svg {
-      width: 18px;
-      height: 18px;
+    .news-banner-image.no-img::after {
+      content: attr(data-year);
+      color: rgba(0, 0, 0, 0.18);
+      font-size: 4.5rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
     }
 
-    .review-type {
-      padding: 5px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      font-family: "DM Mono", monospace;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+    @media (max-width: 850px) {
+      .news-banner {
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+
+      .news-banner-image {
+        order: -1;
+        aspect-ratio: 16 / 10;
+        border-radius: 0 0 60px 60px;
+        box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.28);
+      }
+
+      .news-banner-text {
+        padding: 24px;
+      }
+    }
+
+    /* top panel: certificate preview */
+
+    .review-preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .review-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .review-preview.no-img img {
+      display: none;
+    }
+
+    /* bottom panel: details */
+
+    .review-details {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      border-top: 1px solid var(--line);
+      background: var(--surface);
+      text-align: center;
     }
 
     .review-card h3 {
-      margin-bottom: 6px;
-      font-size: 1.1rem;
+      margin-bottom: 4px;
+      font-size: 1.05rem;
       letter-spacing: -0.02em;
       line-height: 1.3;
     }
 
     .review-publisher {
-      margin-bottom: 20px;
+      margin-bottom: 12px;
       color: var(--muted);
       font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 0.01em;
       line-height: 1.5;
     }
 
+    .review-publisher.news-text {
+      margin-bottom: 16px;
+      font-size: 0.88rem;
+      font-weight: 400;
+      line-height: 1.65;
+    }
+
     .review-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       margin-top: auto;
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
       color: var(--muted);
       font-family: "DM Mono", monospace;
-      font-size: 0.78rem;
-    }
-
-    .review-count {
-      color: var(--accent-dark);
-      font-weight: 700;
-    }
-
-    body.dark-mode .review-count {
-      color: var(--accent);
-    }
-
-    .review-cert {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--accent-dark);
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-
-    body.dark-mode .review-cert {
-      color: var(--accent);
-    }
-
-    .review-cert svg {
-      width: 14px;
-      height: 14px;
+      font-size: 0.75rem;
     }
 
     /* Projects */
@@ -1226,6 +1548,193 @@
       margin-left: 0;
     }
 
+    /* Recommendations */
+
+    .reco {
+      position: relative;
+    }
+
+    .reco-viewport {
+      overflow: hidden;
+      border-radius: 0;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .reco-viewport.dragging {
+      cursor: grabbing;
+    }
+
+    .reco-track {
+      display: flex;
+      transition: transform 0.5s ease;
+      will-change: transform;
+    }
+
+    .reco-slide {
+      flex: 0 0 100%;
+      min-width: 0;
+      padding: 4px;
+    }
+
+    .reco-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      align-items: start;
+      gap: 40px;
+      min-height: 280px;
+      padding: 40px 44px;
+      border: none;
+      border-radius: 0;
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .reco-quote-mark {
+      position: absolute;
+      top: 6px;
+      left: 168px;
+      color: var(--accent);
+      font-family: Georgia, serif;
+      font-size: 9rem;
+      font-weight: 700;
+      line-height: 1;
+      opacity: 0.45;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .reco-avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 140px;
+      height: 140px;
+      overflow: hidden;
+      border: 4px solid var(--bg);
+      border-radius: 50%;
+      background: var(--dark);
+      color: var(--bg);
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      box-shadow: 0 8px 24px -10px rgba(0, 0, 0, 0.35);
+    }
+
+    .reco-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .reco-body {
+      position: relative;
+      z-index: 1;
+    }
+
+    .reco-text {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+
+    .reco-name {
+      margin-top: 22px;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .reco-role {
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .reco-rating {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-top: 8px;
+      color: #f59e0b;
+    }
+
+    .reco-rating svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    .reco-rating span {
+      margin-left: 5px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .reco-dots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .reco-dot {
+      width: 12px;
+      height: 12px;
+      padding: 0;
+      border: 1px solid var(--text);
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .reco-dot:hover {
+      transform: scale(1.2);
+    }
+
+    .reco-dot.active {
+      background: var(--text);
+    }
+
+    .reco-dot:focus-visible,
+    .reco-viewport:focus-visible {
+      outline: 2px solid var(--accent-dark);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reco-track {
+        transition: none;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .reco-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 32px 26px;
+      }
+
+      .reco-avatar {
+        width: 100px;
+        height: 100px;
+        font-size: 1.8rem;
+      }
+
+      .reco-quote-mark {
+        top: 14px;
+        right: 22px;
+        left: auto;
+        font-size: 6rem;
+      }
+    }
+
     @media (max-width: 850px) {
       .arrow-icon {
         width: 1em;
@@ -1438,48 +1947,6 @@
         width: min(var(--max-width), calc(100% - 32px));
       }
 
-      .nav-links {
-        position: absolute;
-        top: 76px;
-        right: 16px;
-        left: 16px;
-        display: none;
-        flex-direction: column;
-        gap: 0;
-        padding: 12px;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        background: var(--surface);
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links a {
-        display: block;
-        padding: 12px;
-      }
-
-      .nav-links a::after {
-        left: 12px;
-        width: 0;
-      }
-
-      .nav-links a:hover::after,
-      .nav-links a.active::after {
-        width: calc(100% - 24px);
-      }
-
-      .theme-toggle {
-        margin-left: auto;
-        margin-right: 12px;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
       .hero,
       .about-grid,
       .contact {
@@ -1605,8 +2072,9 @@
 <body>
   <header class="site-header">
     <div class="container nav">
-      <a href="#" class="brand">
-        BABAK BADAKHSHAN<span>.</span>
+      <a href="#" class="brand" aria-label="Babak Badakhshan, home">
+        <img class="brand-logo" src="assets/logo.png" alt="" width="40" height="40" />
+        BABAK BADAKHSHAN
       </a>
 
       <ul class="nav-links">
@@ -1614,8 +2082,16 @@
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#publications">Publications</a></li>
-        <li><a href="#peer-review">Peer Review</a></li>
-        <li><a href="#news">News</a></li>
+        <li class="nav-dropdown">
+          <a href="#peer-review" class="nav-dropdown-main">Peer Review</a>
+          <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="More sections: News and Recommendations">
+            <svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4l4 4 4-4"></path></svg>
+          </button>
+          <ul class="nav-submenu">
+            <li><a href="#news">News</a></li>
+            <li><a href="#recommendations">Recommendations</a></li>
+          </ul>
+        </li>
         <li><a href="#contact">Contact</a></li>
       </ul>
 
@@ -2284,151 +2760,97 @@
           </p>
         </div>
 
+        <div class="review-slider">
         <div class="review-grid">
-          <div class="review-card">
-            <div class="review-top">
-              <span class="review-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></svg>
-              </span>
-              <span class="review-type">Journal</span>
-            </div>
-            <h3>Journal of Urban Mobility</h3>
-            <p class="review-publisher">Elsevier</p>
-            <div class="review-meta">
-              <span><span class="review-count">5</span> reviews</span>
-              <span>2022 – 2025</span>
-            </div>
-            <a
-              class="review-cert"
-              href="https://drive.google.com/file/d/1iWQczMQewxAw59jkL8zHQUMVYuoDjQ9r/view?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View certificate
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+          <article class="review-card">
+            <!-- Top panel: certificate preview (Google Drive thumbnail of the certificate file) -->
+            <a class="review-preview" href="https://drive.google.com/file/d/1iWQczMQewxAw59jkL8zHQUMVYuoDjQ9r/view?usp=sharing" target="_blank" rel="noreferrer" aria-label="Open certificate: Journal of Urban Mobility">
+              <img src="https://drive.google.com/thumbnail?id=1iWQczMQewxAw59jkL8zHQUMVYuoDjQ9r&amp;sz=w1000" alt="Reviewer certificate, Journal of Urban Mobility" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add('no-img')" />
             </a>
-          </div>
 
-          <div class="review-card">
-            <div class="review-top">
-              <span class="review-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></svg>
-              </span>
-              <span class="review-type">Journal</span>
+            <!-- Bottom panel: details -->
+            <div class="review-details">
+              <h3>Journal of Urban Mobility</h3>
+              <p class="review-publisher">Elsevier</p>
+              <p class="review-meta">5 reviews &middot; 2022 – 2025</p>
             </div>
-            <h3>Sustainable Cities and Society</h3>
-            <p class="review-publisher">Elsevier</p>
-            <div class="review-meta">
-              <span><span class="review-count">2</span> reviews</span>
-              <span>2023 – 2025</span>
-            </div>
-            <a
-              class="review-cert"
-              href="https://drive.google.com/file/d/1ngtDQg2ab5iwKzjzO9qGEw0dECnbIidv/view?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View certificate
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
-            </a>
-          </div>
+          </article>
 
-          <div class="review-card">
-            <div class="review-top">
-              <span class="review-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></svg>
-              </span>
-              <span class="review-type">Journal</span>
-            </div>
-            <h3>Scientific Reports</h3>
-            <p class="review-publisher">Springer Nature</p>
-            <div class="review-meta">
-              <span><span class="review-count">1</span> reviews</span>
-              <span>2024 – Present</span>
-            </div>
-            <a
-              class="review-cert"
-              href="https://drive.google.com/file/d/1B8GA4Tfr8FFXKbo4zhVjw5S4NKQPYMJk/view?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View certificate
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+          <article class="review-card">
+            <!-- Top panel: certificate preview (Google Drive thumbnail of the certificate file) -->
+            <a class="review-preview" href="https://drive.google.com/file/d/1ngtDQg2ab5iwKzjzO9qGEw0dECnbIidv/view?usp=sharing" target="_blank" rel="noreferrer" aria-label="Open certificate: Sustainable Cities and Society">
+              <img src="https://drive.google.com/thumbnail?id=1ngtDQg2ab5iwKzjzO9qGEw0dECnbIidv&amp;sz=w1000" alt="Reviewer certificate, Sustainable Cities and Society" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add('no-img')" />
             </a>
-          </div>
 
-          <div class="review-card">
-            <div class="review-top">
-              <span class="review-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></svg>
-              </span>
-              <span class="review-type">Journal</span>
+            <!-- Bottom panel: details -->
+            <div class="review-details">
+              <h3>Sustainable Cities and Society</h3>
+              <p class="review-publisher">Elsevier</p>
+              <p class="review-meta">2 reviews &middot; 2023 – 2025</p>
             </div>
-            <h3>Urban Climate</h3>
-            <p class="review-publisher">Elsevier</p>
-            <div class="review-meta">
-              <span><span class="review-count">1</span> reviews</span>
-              <span>2024</span>
-            </div>
-            <a
-              class="review-cert"
-              href="https://drive.google.com/file/d/1nfYubjOfKQXivKi-JjsTAHorerbfBgjk/view?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View certificate
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
-            </a>
-          </div>
+          </article>
 
-          <div class="review-card">
-            <div class="review-top">
-              <span class="review-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></svg>
-              </span>
-              <span class="review-type">Journal</span>
-            </div>
-            <h3>Geoforum</h3>
-            <p class="review-publisher">Elsevier</p>
-            <div class="review-meta">
-              <span><span class="review-count">1</span> reviews</span>
-              <span>2021 – 2024</span>
-            </div>
-            <a
-              class="review-cert"
-              href="https://drive.google.com/file/d/1-pdDjFLXPwudbh0M6bBlW67HIDP3maf8/view?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View certificate
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+          <article class="review-card">
+            <!-- Top panel: certificate preview (Google Drive thumbnail of the certificate file) -->
+            <a class="review-preview" href="https://drive.google.com/file/d/1B8GA4Tfr8FFXKbo4zhVjw5S4NKQPYMJk/view?usp=sharing" target="_blank" rel="noreferrer" aria-label="Open certificate: Scientific Reports">
+              <img src="https://drive.google.com/thumbnail?id=1B8GA4Tfr8FFXKbo4zhVjw5S4NKQPYMJk&amp;sz=w1000" alt="Reviewer certificate, Scientific Reports" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add('no-img')" />
             </a>
-          </div>
 
-          <div class="review-card">
-            <div class="review-top">
-              <span class="review-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></svg>
-              </span>
-              <span class="review-type">Journal</span>
+            <!-- Bottom panel: details -->
+            <div class="review-details">
+              <h3>Scientific Reports</h3>
+              <p class="review-publisher">Springer Nature</p>
+              <p class="review-meta">1 review &middot; 2024 – Present</p>
             </div>
-            <h3>GeoJournal</h3>
-            <p class="review-publisher">Springer Nature</p>
-            <div class="review-meta">
-              <span><span class="review-count">1</span> review</span>
-              <span>2025</span>
-            </div>
-            <a
-              class="review-cert"
-              href="https://drive.google.com/file/d/1ZyVsJZ61-iBt7HcVtyJijKvDI_Qbq0RN/view?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View certificate
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+          </article>
+
+          <article class="review-card">
+            <!-- Top panel: certificate preview (Google Drive thumbnail of the certificate file) -->
+            <a class="review-preview" href="https://drive.google.com/file/d/1nfYubjOfKQXivKi-JjsTAHorerbfBgjk/view?usp=sharing" target="_blank" rel="noreferrer" aria-label="Open certificate: Urban Climate">
+              <img src="https://drive.google.com/thumbnail?id=1nfYubjOfKQXivKi-JjsTAHorerbfBgjk&amp;sz=w1000" alt="Reviewer certificate, Urban Climate" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add('no-img')" />
             </a>
-          </div>
+
+            <!-- Bottom panel: details -->
+            <div class="review-details">
+              <h3>Urban Climate</h3>
+              <p class="review-publisher">Elsevier</p>
+              <p class="review-meta">1 review &middot; 2024</p>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <!-- Top panel: certificate preview (Google Drive thumbnail of the certificate file) -->
+            <a class="review-preview" href="https://drive.google.com/file/d/1-pdDjFLXPwudbh0M6bBlW67HIDP3maf8/view?usp=sharing" target="_blank" rel="noreferrer" aria-label="Open certificate: Geoforum">
+              <img src="https://drive.google.com/thumbnail?id=1-pdDjFLXPwudbh0M6bBlW67HIDP3maf8&amp;sz=w1000" alt="Reviewer certificate, Geoforum" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add('no-img')" />
+            </a>
+
+            <!-- Bottom panel: details -->
+            <div class="review-details">
+              <h3>Geoforum</h3>
+              <p class="review-publisher">Elsevier</p>
+              <p class="review-meta">1 review &middot; 2021 – 2024</p>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <!-- Top panel: certificate preview (Google Drive thumbnail of the certificate file) -->
+            <a class="review-preview" href="https://drive.google.com/file/d/1ZyVsJZ61-iBt7HcVtyJijKvDI_Qbq0RN/view?usp=sharing" target="_blank" rel="noreferrer" aria-label="Open certificate: GeoJournal">
+              <img src="https://drive.google.com/thumbnail?id=1ZyVsJZ61-iBt7HcVtyJijKvDI_Qbq0RN&amp;sz=w1000" alt="Reviewer certificate, GeoJournal" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add('no-img')" />
+            </a>
+
+            <!-- Bottom panel: details -->
+            <div class="review-details">
+              <h3>GeoJournal</h3>
+              <p class="review-publisher">Springer Nature</p>
+              <p class="review-meta">1 review &middot; 2025</p>
+            </div>
+          </article>
         </div>
+
+        <div class="review-controls">
+          <div class="review-dots" role="tablist" aria-label="Choose page"></div>
+        </div>
+      </div>
       </div>
     </section>
 
@@ -2447,9 +2869,9 @@
           </p>
         </div>
 
-        <div class="news-list">
-          <article
-            class="news-card news-clickable"
+        <div class="review-slider" data-desktop="1" data-mode="window">
+        <div class="review-grid">
+          <article class="news-banner news-clickable"
             data-type="news"
             data-title="New paper accepted at an international journal."
             data-meta="November 2024"
@@ -2460,23 +2882,17 @@
             data-link="https://www.sciencedirect.com/science/article/pii/S2667091725000706#abs0001"
             tabindex="0"
           >
-            <span class="mono">December 2025</span>
-
-            <h3>
-              New paper accepted at an international journal.
-            </h3>
-
-            <p>
-              Curious about the implementation of the 15-minute city concept in Global South cities?! Then see my latest paper, just published in the Journal of Urban Mobility.
-            </p>
-
-            <span class="news-more">
-              View details <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
-            </span>
+            <div class="news-banner-text">
+              <h3>New paper accepted at an international journal.</h3>
+              <p>Curious about the implementation of the 15-minute city concept in Global South cities?! Then see my latest paper, just published in the Journal of Urban Mobility.</p>
+              <span class="news-banner-date">December 2025</span>
+            </div>
+            <div class="news-banner-image" data-year="2025">
+              <img src="assets/news3.jpg" alt="New paper accepted at an international journal." loading="lazy" draggable="false" onerror="newsImgError(this)" />
+            </div>
           </article>
 
-          <article
-            class="news-card news-clickable"
+          <article class="news-banner news-clickable"
             data-type="news"
             data-title="Starting a new position at Shahrpat."
             data-meta="November 2024"
@@ -2485,23 +2901,17 @@
             data-link="https://example.com/news-2"
             tabindex="0"
           >
-            <span class="mono">November 2024</span>
-
-            <h3>
-              Starting a new position at Shahrpat.
-            </h3>
-
-            <p>
-              I am now a Data Scientist at Shahrpat Institute, bringing my years of experience in big data analytics to meaningful and practical solutions for urban policymakers.
-            </p>
-
-            <span class="news-more">
-              View details <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
-            </span>
+            <div class="news-banner-text">
+              <h3>Starting a new position at Shahrpat.</h3>
+              <p>I am now a Data Scientist at Shahrpat Institute, bringing my years of experience in big data analytics to meaningful and practical solutions for urban policymakers.</p>
+              <span class="news-banner-date">November 2024</span>
+            </div>
+            <div class="news-banner-image" data-year="2024">
+              <img src="assets/news2.jpg" alt="Starting a new position at Shahrpat." loading="lazy" draggable="false" onerror="newsImgError(this)" />
+            </div>
           </article>
 
-          <article
-            class="news-card news-clickable"
+          <article class="news-banner news-clickable"
             data-type="news"
             data-title="A new interdisciplinary research project started."
             data-meta="March 2026"
@@ -2512,20 +2922,99 @@
             data-link="https://example.com/news-3"
             tabindex="0"
           >
-            <span class="mono">October 2023 </span>
-
-            <h3>
-              A new interdisciplinary research project started.
-            </h3>
-
-            <p>
-              We officially launched our newly founded project "G-15" by bringing together key stakeholders and practitioners for a two days of discussion and planning.
-            </p>
-
-            <span class="news-more">
-              View details <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
-            </span>
+            <div class="news-banner-text">
+              <h3>A new interdisciplinary research project started.</h3>
+              <p>We officially launched our newly founded project "G-15" by bringing together key stakeholders and practitioners for a two days of discussion and planning.</p>
+              <span class="news-banner-date">October 2023 </span>
+            </div>
+            <div class="news-banner-image" data-year="2023">
+              <img src="assets/news1.jpg" alt="A new interdisciplinary research project started." loading="lazy" draggable="false" onerror="newsImgError(this)" />
+            </div>
           </article>
+        </div>
+
+        <div class="review-controls">
+          <div class="review-dots" role="tablist" aria-label="Choose page"></div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- Recommendations -->
+    <section id="recommendations">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-heading-row">
+            <span class="section-number">07.</span>
+            <h2>Recommendations</h2>
+            <span class="section-heading-line"></span>
+          </div>
+
+          <p>
+            Kind words from colleagues, supervisors and collaborators.
+          </p>
+        </div>
+
+        <div class="reco" aria-roledescription="carousel" aria-label="Recommendations">
+          <div class="reco-viewport" tabindex="0">
+            <div class="reco-track">
+            <div class="reco-slide" role="group" aria-roledescription="slide">
+              <article class="reco-card">
+                <span class="reco-quote-mark" aria-hidden="true">&ldquo;</span>
+                <div class="reco-avatar">
+                   <img src="assets/samira.jpg" alt="Samira Ramezani" />
+                 
+                </div>
+                <div class="reco-body">
+                  <p class="reco-text">Babak is capable of conducting high-quality research, building versatile products and writing comprehensive reports. Beyond this, he is a great person and always has a supportive attitude.</p>
+                  <h3 class="reco-name">Samira Ramezani</h3>
+                  <div class="reco-role">Assistant professor · University of Groningen</div>
+                  <div class="reco-rating" aria-label="Rated 5 out of 5">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6L2.5 9.5l6.6-.9z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6L2.5 9.5l6.6-.9z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6L2.5 9.5l6.6-.9z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6L2.5 9.5l6.6-.9z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6L2.5 9.5l6.6-.9z"></path></svg><span>5</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="reco-slide" role="group" aria-roledescription="slide">
+              <article class="reco-card">
+                <span class="reco-quote-mark" aria-hidden="true">&ldquo;</span>
+                <div class="reco-avatar">
+                  <img src="assets/ayyoob.jpg" alt="Ayyoob Sharifi" />
+                 
+                </div>
+                <div class="reco-body">
+                  <p class="reco-text">In my experience working with Babak, I have come to know him as an excellent researcher, with a broad range of analytical skills, great attention to detail, and the ability to work both independently and collaboratively as part of a team. His background and interest in (urban) environment-health interaction, and his professional expertise in GIS and (spatial) statistics make him a very employable team member.</p>
+                  <h3 class="reco-name">Ayyoob Sharifi</h3>
+                  <div class="reco-role">Professor · Hiroshima University</div>
+                  <div class="reco-rating" aria-label="Rated 5 out of 5">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6L2.5 9.5l6.6-.9z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6L2.5 9.5l6.6-.9z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6L2.5 9.5l6.6-.9z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6L2.5 9.5l6.6-.9z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6L2.5 9.5l6.6-.9z"></path></svg><span>5</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="reco-slide" role="group" aria-roledescription="slide">
+              <article class="reco-card">
+                <span class="reco-quote-mark" aria-hidden="true">&ldquo;</span>
+                <div class="reco-avatar">
+                  <img src="assets/fatemeh.jpg" alt="Fatemeh Salehipour Bavarsad" />
+                 
+                </div>
+                <div class="reco-body">
+                  <p class="reco-text">Replace this text with a third recommendation. You can add or remove slides freely; the dots below the card update automatically.</p>
+                  <h3 class="reco-name">Fatemeh Salehipour Bavarsad</h3>
+                  <div class="reco-role">Post-Doctoral Research Fellow · Czech Technical University</div>
+                  <div class="reco-rating" aria-label="Rated 5 out of 5">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6L2.5 9.5l6.6-.9z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6L2.5 9.5l6.6-.9z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6L2.5 9.5l6.6-.9z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6L2.5 9.5l6.6-.9z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6L2.5 9.5l6.6-.9z"></path></svg><span>5</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            </div>
+          </div>
+          <div class="reco-dots" role="tablist" aria-label="Choose recommendation"></div>
         </div>
       </div>
     </section>
@@ -2535,7 +3024,7 @@
       <div class="container">
         <div class="section-heading">
           <div class="section-heading-row">
-            <span class="section-number">07.</span>
+            <span class="section-number">08.</span>
             <h2>Contact</h2>
             <span class="section-heading-line"></span>
           </div>
@@ -2738,10 +3227,80 @@
       navLinks.classList.toggle("open");
     });
 
-    document.querySelectorAll(".nav-links a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
+    const navDropdowns = [...document.querySelectorAll(".nav-dropdown")];
+
+    function closeDropdowns(except) {
+      navDropdowns.forEach((d) => {
+        if (d === except) return;
+        d.classList.remove("open");
+        d.querySelector(".nav-dropdown-toggle").setAttribute("aria-expanded", "false");
       });
+    }
+
+    navDropdowns.forEach((d) => {
+      const toggle = d.querySelector(".nav-dropdown-toggle");
+      toggle.addEventListener("click", () => {
+        const open = d.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".nav-dropdown")) closeDropdowns();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeDropdowns();
+    });
+
+    /* The grouped item shows whichever of its sections was chosen last */
+
+    const navGroup = [
+      { href: "#peer-review", label: "Peer Review" },
+      { href: "#news", label: "News" },
+      { href: "#recommendations", label: "Recommendations" },
+    ];
+    const groupMain = document.querySelector(".nav-dropdown-main");
+    const groupMenu = document.querySelector(".nav-submenu");
+    let groupCurrent = "#peer-review";
+
+    function setGroup(href) {
+      if (!groupMain || !groupMenu) return;
+      const item = navGroup.find((g) => g.href === href);
+      if (!item || href === groupCurrent) return;
+      groupCurrent = href;
+      groupMain.textContent = item.label;
+      groupMain.setAttribute("href", item.href);
+      groupMenu.innerHTML = "";
+      navGroup
+        .filter((g) => g.href !== href)
+        .forEach((g) => {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.setAttribute("href", g.href);
+          a.textContent = g.label;
+          li.appendChild(a);
+          groupMenu.appendChild(li);
+        });
+      groupToggleLabel();
+    }
+
+    function groupToggleLabel() {
+      const others = navGroup
+        .filter((g) => g.href !== groupCurrent)
+        .map((g) => g.label)
+        .join(" and ");
+      const toggle = document.querySelector(".nav-dropdown-toggle");
+      if (toggle) toggle.setAttribute("aria-label", "More sections: " + others);
+    }
+
+    navLinks.addEventListener("click", (e) => {
+      const link = e.target.closest("a");
+      if (!link) return;
+      setGroup(link.getAttribute("href"));
+      navLinks.classList.remove("open");
+      closeDropdowns();
+      link.blur();
     });
 
     /* Highlight the nav link of the section currently in view */
@@ -2770,7 +3329,9 @@
         current = navSections[navSections.length - 1];
       }
 
-      navAnchors.forEach((a) => {
+      if (current) setGroup("#" + current.id);
+
+      [...document.querySelectorAll(".nav-links a[href^='#']")].forEach((a) => {
         const isActive =
           current && a.getAttribute("href") === "#" + current.id;
         a.classList.toggle("active", Boolean(isActive));
@@ -2780,6 +3341,10 @@
         } else {
           a.removeAttribute("aria-current");
         }
+      });
+
+      navDropdowns.forEach((d) => {
+        d.classList.toggle("active", Boolean(d.querySelector("a.active")));
       });
     }
 
@@ -2835,6 +3400,355 @@
       localStorage.setItem("theme", currentTheme);
 
       updateThemeButton();
+    });
+
+    /* Recommendations carousel: always slides to the left, loops, auto-plays */
+
+    (function () {
+      const root = document.querySelector(".reco");
+      if (!root) return;
+
+      const viewport = root.querySelector(".reco-viewport");
+      const track = root.querySelector(".reco-track");
+      const slides = [...root.querySelectorAll(".reco-slide")];
+      const dotsWrap = root.querySelector(".reco-dots");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const SLIDE_MS = 550;
+      const AUTO_MS = 7000;
+      let index = 0;
+      let busy = false;
+      let timer = null;
+      let paused = false;
+
+      // only the visible slide stays in the track
+      slides.forEach((slide, n) => {
+        if (n !== 0) slide.remove();
+      });
+
+      const dots = slides.map((_, i) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "reco-dot";
+        dot.setAttribute("role", "tab");
+        dot.setAttribute("aria-label", "Recommendation " + (i + 1));
+        dot.addEventListener("click", () => {
+          goTo(i);
+          restartAuto();
+        });
+        dotsWrap.appendChild(dot);
+        return dot;
+      });
+
+      function markActive() {
+        slides.forEach((slide, n) => {
+          slide.setAttribute("aria-hidden", n === index ? "false" : "true");
+        });
+        dots.forEach((dot, n) => {
+          dot.classList.toggle("active", n === index);
+          dot.setAttribute("aria-selected", n === index ? "true" : "false");
+        });
+      }
+
+      function goTo(target) {
+        target = (target + slides.length) % slides.length;
+        if (busy || target === index) return;
+
+        const leaving = slides[index];
+        const entering = slides[target];
+        index = target;
+        markActive();
+
+        if (reduceMotion.matches) {
+          track.replaceChildren(entering);
+          return;
+        }
+
+        busy = true;
+        track.appendChild(entering);
+        void track.offsetWidth;
+        track.style.transition = "transform " + SLIDE_MS + "ms ease";
+        track.style.transform = "translateX(-100%)";
+
+        setTimeout(() => {
+          track.style.transition = "none";
+          leaving.remove();
+          track.style.transform = "translateX(0)";
+          void track.offsetWidth;
+          track.style.transition = "";
+          busy = false;
+        }, SLIDE_MS + 30);
+      }
+
+      function next() {
+        goTo(index + 1);
+      }
+
+      function restartAuto() {
+        clearInterval(timer);
+        if (reduceMotion.matches) return;
+        timer = setInterval(() => {
+          if (!paused && !document.hidden) next();
+        }, AUTO_MS);
+      }
+
+      root.addEventListener("mouseenter", () => { paused = true; });
+      root.addEventListener("mouseleave", () => { paused = false; });
+      root.addEventListener("focusin", () => { paused = true; });
+      root.addEventListener("focusout", () => { paused = false; });
+
+      viewport.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+          goTo(index + (e.key === "ArrowRight" ? 1 : -1));
+          restartAuto();
+        }
+      });
+
+      let startX = null;
+      viewport.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+      viewport.addEventListener("touchend", (e) => {
+        if (startX === null) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 50) {
+          goTo(index + (dx < 0 ? 1 : -1));
+          restartAuto();
+        }
+        startX = null;
+      });
+
+      // mouse drag: the card follows the pointer, then snaps to the next/previous slide
+      let drag = null;
+
+      function setupNeighbor(d, dir) {
+        if (d.neighbor) d.neighbor.remove();
+        d.dir = dir;
+        d.targetIndex = (index + dir + slides.length) % slides.length;
+        d.neighbor = slides[d.targetIndex];
+        d.base = dir === -1 ? -d.width : 0;
+        if (dir === 1) track.appendChild(d.neighbor);
+        else track.insertBefore(d.neighbor, track.firstChild);
+      }
+
+      function finishDrag(d, commit) {
+        const current = slides[index];
+        busy = true;
+        track.style.transition = "transform " + SLIDE_MS + "ms ease";
+        track.style.transform = "translateX(" + (commit ? (d.dir === 1 ? -d.width : 0) : d.base) + "px)";
+        setTimeout(() => {
+          track.style.transition = "none";
+          if (commit) {
+            current.remove();
+            index = d.targetIndex;
+            markActive();
+          } else {
+            d.neighbor.remove();
+          }
+          track.style.transform = "translateX(0)";
+          void track.offsetWidth;
+          track.style.transition = "";
+          busy = false;
+        }, SLIDE_MS + 30);
+      }
+
+      viewport.addEventListener("pointerdown", (e) => {
+        if (e.pointerType !== "mouse" || e.button !== 0 || busy || slides.length < 2) return;
+        drag = { startX: e.clientX, dx: 0, dir: 0, neighbor: null, width: viewport.offsetWidth, id: e.pointerId };
+        paused = true;
+      });
+
+      viewport.addEventListener("pointermove", (e) => {
+        if (!drag || e.pointerId !== drag.id) return;
+        const dx = e.clientX - drag.startX;
+        if (!drag.active) {
+          if (Math.abs(dx) < 5) return;
+          drag.active = true;
+          viewport.setPointerCapture(e.pointerId);
+          viewport.classList.add("dragging");
+          track.style.transition = "none";
+        }
+        const dir = dx < 0 ? 1 : -1;
+        if (dir !== drag.dir) setupNeighbor(drag, dir);
+        drag.dx = dx;
+        track.style.transform = "translateX(" + (drag.base + dx) + "px)";
+      });
+
+      function endDrag(e) {
+        if (!drag || e.pointerId !== drag.id) return;
+        const d = drag;
+        drag = null;
+        viewport.classList.remove("dragging");
+        if (viewport.hasPointerCapture(e.pointerId)) viewport.releasePointerCapture(e.pointerId);
+        if (!d.active || !d.neighbor) { paused = false; return; }
+        finishDrag(d, Math.abs(d.dx) > Math.min(80, d.width * 0.2));
+        restartAuto();
+        paused = root.matches(":hover");
+      }
+      viewport.addEventListener("pointerup", endDrag);
+      viewport.addEventListener("pointercancel", endDrag);
+      viewport.addEventListener("dragstart", (e) => e.preventDefault());
+
+      markActive();
+      restartAuto();
+    })();
+
+    /* News pictures: try other common file extensions, then show a placeholder */
+
+    function newsImgError(img) {
+      const exts = ["jpg", "jpeg", "png", "webp", "JPG", "JPEG", "PNG"];
+      const tried = (img.dataset.tried || "").split(",").filter(Boolean);
+      const m = img.getAttribute("src").match(/^(.*)\.([A-Za-z]+)$/);
+
+      if (m) {
+        tried.push(m[2]);
+        const next = exts.find((e) => !tried.includes(e));
+        if (next) {
+          img.dataset.tried = tried.join(",");
+          img.src = m[1] + "." + next;
+          return;
+        }
+      }
+
+      img.parentElement.classList.add("no-img");
+    }
+
+    /* Peer review slider: pages of cards, switches instantly (no animation) */
+
+    document.querySelectorAll(".review-slider").forEach((slider) => {
+      const cards = [...slider.querySelectorAll(".review-card, .news-banner")];
+      const controls = slider.querySelector(".review-controls");
+      const dotsWrap = slider.querySelector(".review-dots");
+      let page = 0;
+      let pageCount = 0;
+
+      const desktopCount = Number(slider.dataset.desktop) || 3;
+      const windowMode = slider.dataset.mode === "window";
+
+      function perPage() {
+        if (window.innerWidth <= 850) return 1;
+        if (window.innerWidth <= 1100) return Math.min(2, desktopCount);
+        return desktopCount;
+      }
+
+      function buildDots(count) {
+        dotsWrap.innerHTML = "";
+        for (let i = 0; i < count; i++) {
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.className = "reco-dot";
+          dot.setAttribute("role", "tab");
+          dot.setAttribute("aria-label", "Page " + (i + 1));
+          dot.addEventListener("click", () => show(i));
+          dotsWrap.appendChild(dot);
+        }
+      }
+
+      // banners must all be as tall as the tallest one
+      function equalize() {
+        const banners = cards.filter((c) => c.classList.contains("news-banner"));
+        if (!banners.length) return;
+
+        const wasHidden = banners.map((c) => c.hidden);
+        banners.forEach((c) => {
+          c.style.minHeight = "";
+          c.hidden = false;
+        });
+
+        const tallest = Math.max(...banners.map((c) => c.offsetHeight));
+
+        banners.forEach((c, i) => {
+          c.style.minHeight = tallest + "px";
+          c.hidden = wasHidden[i];
+        });
+      }
+
+      function show(target) {
+        equalize();
+        const size = perPage();
+        // "window" mode moves one card at a time, so every position is full
+        const count = windowMode
+          ? Math.max(1, cards.length - size + 1)
+          : Math.ceil(cards.length / size);
+
+        if (count !== pageCount) {
+          pageCount = count;
+          buildDots(count);
+        }
+
+        page = ((target % count) + count) % count;
+
+        const first = windowMode ? page : page * size;
+
+        cards.forEach((card, i) => {
+          card.hidden = i < first || i >= first + size;
+        });
+
+        [...dotsWrap.children].forEach((dot, i) => {
+          dot.classList.toggle("active", i === page);
+          dot.setAttribute("aria-selected", i === page ? "true" : "false");
+        });
+
+        controls.hidden = count <= 1;
+      }
+
+      window.addEventListener("resize", () => show(page));
+      window.addEventListener("load", () => show(page));
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => show(page));
+      }
+
+      /* drag (mouse) or swipe (touch) left / right to change page */
+
+      const grid = slider.querySelector(".review-grid");
+      let startX = null;
+      let startY = null;
+      let dragged = false;
+
+      grid.addEventListener("dragstart", (e) => e.preventDefault());
+
+      grid.addEventListener("pointerdown", (e) => {
+        if (e.pointerType === "mouse" && e.button !== 0) return;
+        startX = e.clientX;
+        startY = e.clientY;
+        dragged = false;
+        grid.classList.add("dragging");
+      });
+
+      window.addEventListener("pointermove", (e) => {
+        if (startX === null) return;
+        if (Math.abs(e.clientX - startX) > 6) dragged = true;
+      });
+
+      function endDrag(e) {
+        if (startX === null) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        startX = null;
+        grid.classList.remove("dragging");
+
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+          show(page + (dx < 0 ? 1 : -1));
+        }
+      }
+
+      window.addEventListener("pointerup", endDrag);
+      window.addEventListener("pointercancel", () => {
+        startX = null;
+        grid.classList.remove("dragging");
+      });
+
+      // a drag must not open the certificate link under the pointer
+      grid.addEventListener(
+        "click",
+        (e) => {
+          if (dragged) {
+            e.preventDefault();
+            e.stopPropagation();
+            dragged = false;
+          }
+        },
+        true
+      );
+
+      show(0);
     });
 
     /* Publication and project modal */

@@ -1210,7 +1210,7 @@
     .timeline-item ul {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 0;
       margin-bottom: 20px;
       list-style: none;
     }
@@ -1222,6 +1222,18 @@
       line-height: 1.6;
     }
 
+    /* thin divider between items */
+    .timeline-item li + li {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .timeline-item li + li::before {
+      top: calc(12px + 0.6em);
+    }
+
+    /* list marker: small dot, same as the skill cards */
     .timeline-item li::before {
       content: "";
       position: absolute;
@@ -1231,6 +1243,10 @@
       height: 6px;
       border-radius: 50%;
       background: var(--accent-dark);
+    }
+
+    body.dark-mode .timeline-item li::before {
+      background: var(--accent);
     }
 
     .timeline-current {
